@@ -1,0 +1,953 @@
+{
+    "counts": {
+        "exact": 4,
+        "similar": 43
+    },
+    "exactMatches": [
+        {
+            "brand_name": "Goodhousekeeping.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQpthSps_I2Y28uNmKuzLHUoFjEYUyrto1puKesZYrHxlFXinXX",
+            "emails": [],
+            "match_type": "Exact Same to Same",
+            "similarity_score": 100.0,
+            "title": "The 35 Cutest Dog Breeds That Will Make You Melt",
+            "url": "https://www.goodhousekeeping.com/life/pets/g4531/cutest-dog-breeds/",
+            "website_url": "https://www.goodhousekeeping.com/life/pets/g4531/cutest-dog-breeds/"
+        },
+        {
+            "brand_name": "Reddit.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8ti-daJi2u1beZ2nP9NnDen2MWsm--dOd6mFvuXliFkKWgMeo",
+            "emails": [],
+            "match_type": "Exact Same to Same",
+            "similarity_score": 100.0,
+            "title": "Cute Dogs Pics : r/wholesome",
+            "url": "https://www.reddit.com/r/wholesome/comments/hxhqnf/cute_dogs_pics/",
+            "website_url": "https://www.reddit.com/r/wholesome/comments/hxhqnf/cute_dogs_pics/"
+        },
+        {
+            "brand_name": "Northkennyvet.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTwNgKkH5YC11a2NIF0NPrSheHNMYD-zSOVdhqSV_X7TXgzVH4p",
+            "emails": [],
+            "match_type": "Exact Same to Same",
+            "similarity_score": 100.0,
+            "title": "What Vaccines Does My Puppy Need in Columbus, OH? - North ...",
+            "url": "https://northkennyvet.com/blog/puppy-vaccines-columbus/",
+            "website_url": "https://northkennyvet.com/blog/puppy-vaccines-columbus/"
+        },
+        {
+            "brand_name": "Treehugger.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQrL2M-yPcXb2tJnPP6IzQM9dMATZfaDl41xBhOFJDMe67dzNiS",
+            "emails": [],
+            "match_type": "Exact Same to Same",
+            "similarity_score": 100.0,
+            "title": "Preparing a Garden for a Puppy",
+            "url": "https://www.treehugger.com/preparing-garden-for-puppy-7479700",
+            "website_url": "https://www.treehugger.com/preparing-garden-for-puppy-7479700"
+        }
+    ],
+    "matching_websites": [
+        {
+            "brand_name": "Goodhousekeeping.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQpthSps_I2Y28uNmKuzLHUoFjEYUyrto1puKesZYrHxlFXinXX",
+            "emails": [],
+            "match_type": "Exact Same to Same",
+            "similarity_score": 100.0,
+            "title": "The 35 Cutest Dog Breeds That Will Make You Melt",
+            "url": "https://www.goodhousekeeping.com/life/pets/g4531/cutest-dog-breeds/",
+            "website_url": "https://www.goodhousekeeping.com/life/pets/g4531/cutest-dog-breeds/"
+        },
+        {
+            "brand_name": "Reddit.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8ti-daJi2u1beZ2nP9NnDen2MWsm--dOd6mFvuXliFkKWgMeo",
+            "emails": [],
+            "match_type": "Exact Same to Same",
+            "similarity_score": 100.0,
+            "title": "Cute Dogs Pics : r/wholesome",
+            "url": "https://www.reddit.com/r/wholesome/comments/hxhqnf/cute_dogs_pics/",
+            "website_url": "https://www.reddit.com/r/wholesome/comments/hxhqnf/cute_dogs_pics/"
+        },
+        {
+            "brand_name": "Northkennyvet.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTwNgKkH5YC11a2NIF0NPrSheHNMYD-zSOVdhqSV_X7TXgzVH4p",
+            "emails": [],
+            "match_type": "Exact Same to Same",
+            "similarity_score": 100.0,
+            "title": "What Vaccines Does My Puppy Need in Columbus, OH? - North ...",
+            "url": "https://northkennyvet.com/blog/puppy-vaccines-columbus/",
+            "website_url": "https://northkennyvet.com/blog/puppy-vaccines-columbus/"
+        },
+        {
+            "brand_name": "Treehugger.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQrL2M-yPcXb2tJnPP6IzQM9dMATZfaDl41xBhOFJDMe67dzNiS",
+            "emails": [],
+            "match_type": "Exact Same to Same",
+            "similarity_score": 100.0,
+            "title": "Preparing a Garden for a Puppy",
+            "url": "https://www.treehugger.com/preparing-garden-for-puppy-7479700",
+            "website_url": "https://www.treehugger.com/preparing-garden-for-puppy-7479700"
+        },
+        {
+            "brand_name": "Chewy.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_grN5VFK6738HkbXeSkEnDXXi0c-DCICYNZPJZ1DkdWyNhko6",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 90.625,
+            "title": "Golden Retriever Characteristics, Care & Photos | Chewy",
+            "url": "https://www.chewy.com/education/dog-breeds/golden-retriever",
+            "website_url": "https://www.chewy.com/education/dog-breeds/golden-retriever"
+        },
+        {
+            "brand_name": "Marthastewart.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcShODV71BJX89-qzE7ftepZq5DUlGFG70NHVd--i4B1nJ2qHH2O",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 84.375,
+            "title": "The Top Trending Pet Names in the US",
+            "url": "https://www.marthastewart.com/top-trending-pet-names-2025-11847930",
+            "website_url": "https://www.marthastewart.com/top-trending-pet-names-2025-11847930"
+        },
+        {
+            "brand_name": "En.as.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTwXJmTjbCiuq_uBaZMtarNFTOMnSqaV4qmL4TndWDH4EJcJtFd",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 68.75,
+            "title": "Trying to choose a name for your dog? These are the most ...",
+            "url": "https://en.as.com/latest_news/trying-to-choose-a-name-for-your-dog-these-are-the-most-common-puppy-names-by-state-n/",
+            "website_url": "https://en.as.com/latest_news/trying-to-choose-a-name-for-your-dog-these-are-the-most-common-puppy-names-by-state-n/"
+        },
+        {
+            "brand_name": "Photowall.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5KYOlHVZJWhZZK2xbJZSidbtVB5gy9pfgePce4eNZWNoziz-x",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 62.5,
+            "title": "Golden Retriever Puppy \u2013 lovely wall mural \u2013 Photowall",
+            "url": "https://www.photowall.com/us/golden-retriever-puppy-wallpaper",
+            "website_url": "https://www.photowall.com/us/golden-retriever-puppy-wallpaper"
+        },
+        {
+            "brand_name": "Purina.co.uk",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRP0ziVS5qNNpdqnaX838ivba7eieJ41K1dJLUy138a8KOBAV6g",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 62.5,
+            "title": "Golden Retriever Dog Breed Information | Purina UK",
+            "url": "https://www.purina.co.uk/find-a-pet/dog-breeds/golden-retriever",
+            "website_url": "https://www.purina.co.uk/find-a-pet/dog-breeds/golden-retriever"
+        },
+        {
+            "brand_name": "Instagram.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSGV3YKKWFWdkWQCsvV8Hu3eL14IJrg3EFhwaNAwAT3i6p6qLv_",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 62.5,
+            "title": "\"This is my second puppy and both experiences have been ...",
+            "url": "https://www.instagram.com/p/DL-2CJZAFUC/",
+            "website_url": "https://www.instagram.com/p/DL-2CJZAFUC/"
+        },
+        {
+            "brand_name": "Thepuppyacademy.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRDT7a6wdtM_MqpMVyDErccWc3OQoQw01_2BhGMfGQPFFDP0UTB",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 59.375,
+            "title": "Celebrate National Pet Month! \u2014 The Puppy Academy",
+            "url": "https://www.thepuppyacademy.com/blog/2022/5/2/celebrate-national-pet-month",
+            "website_url": "https://www.thepuppyacademy.com/blog/2022/5/2/celebrate-national-pet-month"
+        },
+        {
+            "brand_name": "A-z-animals.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRQMZ0jWOgnmGuR7VspphyPTxU7Vq-3JmidL_sZ6XhLGho_tFhb",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 59.375,
+            "title": "Golden Retriever Animal Pictures | A-Z Animals",
+            "url": "https://a-z-animals.com/animals/golden-retriever/pictures/",
+            "website_url": "https://a-z-animals.com/animals/golden-retriever/pictures/"
+        },
+        {
+            "brand_name": "Istockphoto.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRnEyrz6fxTw6J6XRGaAqhGIDyWH-_DmnnoaVZpPTJK03-0SDr8",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 59.375,
+            "title": "33,300+ Golden Retriever Puppies Stock Photos, Pictures ...",
+            "url": "https://www.istockphoto.com/photos/golden-retriever-puppies",
+            "website_url": "https://www.istockphoto.com/photos/golden-retriever-puppies"
+        },
+        {
+            "brand_name": "Stocksy.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSnMYdiMzRH9qZxUayq-e_nY62NioXyidxmTzn9S3mI7uOoBxFg",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 59.375,
+            "title": "Golden Retriever Puppy Laying On Grass\" by Stocksy ...",
+            "url": "https://www.stocksy.com/photo/2150172/golden-retriever-puppy-laying-on-grass",
+            "website_url": "https://www.stocksy.com/photo/2150172/golden-retriever-puppy-laying-on-grass"
+        },
+        {
+            "brand_name": "Youtube.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgM54TJUAlvoVhBdxyhyy80pnSnq4mD0LYy1QboVFEqyZDSduX",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 56.25,
+            "title": "Fear and Hunger 2 Blind First time - YouTube",
+            "url": "https://www.youtube.com/watch?v=Pz_llWVXaMM",
+            "website_url": "https://www.youtube.com/watch?v=Pz_llWVXaMM"
+        },
+        {
+            "brand_name": "Yahoo.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHTXmqVdlbiZAj909i4bokQZPTEYSp1jJ-g7Hg2ijD6KW4qoB8",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 56.25,
+            "title": "25 Cute Dog Breeds You Won't Be Able To Resist",
+            "url": "https://www.yahoo.com/lifestyle/25-cute-dog-breeds-wont-021247912.html",
+            "website_url": "https://www.yahoo.com/lifestyle/25-cute-dog-breeds-wont-021247912.html"
+        },
+        {
+            "brand_name": "Dogpackapp.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG5-Bk8XgkWMwaPAoqk8XmOb6K9eu--HdqlpFnohDm9Lmns95h",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 56.25,
+            "title": "Golden Retriever: The Friendly, Loyal, and Intelligent Companion",
+            "url": "https://www.dogpackapp.com/blog/dog-breeds/golden-retriever/",
+            "website_url": "https://www.dogpackapp.com/blog/dog-breeds/golden-retriever/"
+        },
+        {
+            "brand_name": "Carecredit.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR5tbhyDdlP6WtwV1FSu_6wElyN20jAWAW3uQZf531XnWFZehtr",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 56.25,
+            "title": "Golden Retriever Dog Breed Health and Wellness Guide",
+            "url": "https://www.carecredit.com/well-u/pet-care/golden-retriever-dog-breed/",
+            "website_url": "https://www.carecredit.com/well-u/pet-care/golden-retriever-dog-breed/"
+        },
+        {
+            "brand_name": "Weenect.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuY4knwUQIRhy3rb8RIGJ3VnN1_HvvCJdVtvn6sOA2ItQ6sfKC",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 56.25,
+            "title": "The Golden Retriever: origin, temperament, health and price",
+            "url": "https://www.weenect.com/us/en/guide/dog-breeds/golden-retriever/",
+            "website_url": "https://www.weenect.com/us/en/guide/dog-breeds/golden-retriever/"
+        },
+        {
+            "brand_name": "Animalhearted.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSOmogxu3tRXZc7IJSzxpdTHPipxr-dF6yBjDRUREKldchathRo",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "Cute Golden Retriever Puppies: Best Pictures To Make Your ...",
+            "url": "https://www.animalhearted.com/blogs/animal-blog/62093379-squee-alert-golden-retriever-puppies",
+            "website_url": "https://www.animalhearted.com/blogs/animal-blog/62093379-squee-alert-golden-retriever-puppies"
+        },
+        {
+            "brand_name": "Facebook.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQH4dx1XalXxKoYEIhlejVB7Szpq_MmKuyLdVG7wJsUkF2HTBzn",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "When's the right time to safely spay or neuter your dog ...",
+            "url": "https://www.facebook.com/UCDavis/posts/whens-the-right-time-to-safely-spay-or-neuter-your-dog-a-new-10-year-study-by-uc/906816141492604/",
+            "website_url": "https://www.facebook.com/UCDavis/posts/whens-the-right-time-to-safely-spay-or-neuter-your-dog-a-new-10-year-study-by-uc/906816141492604/"
+        },
+        {
+            "brand_name": "Paradepets.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRXT9wNIMLw5EMt1jyGo0qMlp957CoZzvElmHrCUA9DDb6dt8qG",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "Golden Retriever Puppy Fakes Amnesia To Avoid Conflict and ...",
+            "url": "https://paradepets.com/pet-news/golden-retriever-puppy-fakes-amnesia-to-avoid-conflict-priceless",
+            "website_url": "https://paradepets.com/pet-news/golden-retriever-puppy-fakes-amnesia-to-avoid-conflict-priceless"
+        },
+        {
+            "brand_name": "Kippy.eu",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWd2jFts8mgU8YFGOxH3GTc4WOMFi2W75f53o_Mtpwvy8b1683",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "Golden Retriever puppies: how to train and find the right ...",
+            "url": "https://www.kippy.eu/blog/en/golden-retriever-puppies-2/",
+            "website_url": "https://www.kippy.eu/blog/en/golden-retriever-puppies-2/"
+        },
+        {
+            "brand_name": "Acrossthepondpet.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSlsN438ZkHFyjJNIFCplWbVKRgAaICAbBTDe2lCDZVvzeLCUU3",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "New Rule: No Dogs Younger Than 6 Months Allowed in the USA ...",
+            "url": "https://www.acrossthepondpet.com/resources/blog/119-new-rule-no-dogs-younger-than-6-months-allowed-in-the-usa-from-august-1-2024",
+            "website_url": "https://www.acrossthepondpet.com/resources/blog/119-new-rule-no-dogs-younger-than-6-months-allowed-in-the-usa-from-august-1-2024"
+        },
+        {
+            "brand_name": "Aol.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS1q4C672D8SYPNiwUiTG6eZogWSQfX4_RvG2Nr9Zc_9-xblwm0",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "Family Wants to Give Up Their 'Perfect Puppy' Just 2 Weeks ...",
+            "url": "https://www.aol.com/family-wants-perfect-puppy-just-210000196.html",
+            "website_url": "https://www.aol.com/family-wants-perfect-puppy-just-210000196.html"
+        },
+        {
+            "brand_name": "People.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6wcmPDHpBgOao9pApuSlZNRhXupeVKj11HuEl9cjrPzTiH2nL",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "Family Wants to Give Up 'Perfect Puppy' Just 2 Weeks After ...",
+            "url": "https://people.com/family-wants-to-give-up-perfect-puppy-weeks-after-bringing-her-home-11755819",
+            "website_url": "https://people.com/family-wants-to-give-up-perfect-puppy-weeks-after-bringing-her-home-11755819"
+        },
+        {
+            "brand_name": "Akc.org",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTyOHs_cOO9QhW8aN7RbDGyKC-wisP7LnuEM-f1tYOHg9rVaWLs",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 50.0,
+            "title": "How to Train a Golden Retriever Puppy: Growth & Training ...",
+            "url": "https://www.akc.org/expert-advice/dog-breeds/golden-retriever-puppy-training-timeline/",
+            "website_url": "https://www.akc.org/expert-advice/dog-breeds/golden-retriever-puppy-training-timeline/"
+        },
+        {
+            "brand_name": "Psu.edu",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv-VnnB-DnJdAHycMYI4Wm2Yrp-9p88nGTomL5iD3phTeZcXYQ",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 50.0,
+            "title": "Penn State Extension introduces canine program to support ...",
+            "url": "https://www.psu.edu/news/agricultural-sciences/story/penn-state-extension-introduces-canine-program-support-dog-breeders",
+            "website_url": "https://www.psu.edu/news/agricultural-sciences/story/penn-state-extension-introduces-canine-program-support-dog-breeders"
+        },
+        {
+            "brand_name": "Pets4homes.co.uk",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSZRaYAWzvxoNuXaMe8Z_nRLBo30ZY5W_pnnyqS1FVcgBLisesg",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 50.0,
+            "title": "10 Essential Facts About Golden Retrievers Before Buying ...",
+            "url": "https://www.pets4homes.co.uk/pet-advice/ten-things-you-need-to-know-about-the-golden-retriever-before-you-buy-one.html",
+            "website_url": "https://www.pets4homes.co.uk/pet-advice/ten-things-you-need-to-know-about-the-golden-retriever-before-you-buy-one.html"
+        },
+        {
+            "brand_name": "Moderndogmagazine.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQbdU6cODpUPjuTM8cATGEh6a36DKCHxx1YyLQmdiHWREk6BxqQ",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 50.0,
+            "title": "The Golden Retriever Dog Breed Profile: Characteristics ...",
+            "url": "https://moderndogmagazine.com/articles/breeds/the-golden-retriever/",
+            "website_url": "https://moderndogmagazine.com/articles/breeds/the-golden-retriever/"
+        },
+        {
+            "brand_name": "Headtotailcaninenutrition.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTkDj_60LRteCIJWPV_dtvrpzDGYAKi1FTX6s9ai-2SXImBETNY",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 50.0,
+            "title": "What Happens to Dogs When Luteinizing Hormones Are Removed ...",
+            "url": "https://headtotailcaninenutrition.com/blogs/head-to-tail-canine-nutrition/what-happens-to-dogs-when-luteinizing-hormones-are-removed",
+            "website_url": "https://headtotailcaninenutrition.com/blogs/head-to-tail-canine-nutrition/what-happens-to-dogs-when-luteinizing-hormones-are-removed"
+        },
+        {
+            "brand_name": "Vecteezy.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTbsOKzXv5N4tdiJkccjd4Mn1455t9cF55Y54gdK0PuixOI4vJs",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Adorable Golden Retriever Puppy Playing in a Sunny Yellow ...",
+            "url": "https://www.vecteezy.com/photo/57162718-adorable-golden-retriever-puppy-playing-in-a-sunny-yellow-flower-meadow",
+            "website_url": "https://www.vecteezy.com/photo/57162718-adorable-golden-retriever-puppy-playing-in-a-sunny-yellow-flower-meadow"
+        },
+        {
+            "brand_name": "Today.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRISueKjyWLGLwsl1zvTQGXDS0bQ4HhclPCWbILz1nQET3UFLw-",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "7 mistakes new dog owners make and how to avoid them",
+            "url": "https://www.today.com/pets/7-mistakes-new-dog-owners-make-how-avoid-them-t120341",
+            "website_url": "https://www.today.com/pets/7-mistakes-new-dog-owners-make-how-avoid-them-t120341"
+        },
+        {
+            "brand_name": "Shutterstock.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRdPtUMH9yLMx4XSwsdLEEyEOFT8zkcmqwrXcR2aOoU9aDbxNPD",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Puppy Dog Golden Retriever Labrador 1 Stock Photo 2669424207 ...",
+            "url": "https://www.shutterstock.com/image-photo/puppy-dog-retriever-labrador-1-month-2669424207",
+            "website_url": "https://www.shutterstock.com/image-photo/puppy-dog-retriever-labrador-1-month-2669424207"
+        },
+        {
+            "brand_name": "Pdsa.org.uk",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc-jhvmTW1Gobxsto_v00huxIAjnMSoL55rNqlu-HfFYDE9Qcz",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Golden Retriever - PDSA",
+            "url": "https://www.pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/puppies-dogs/large-dogs/golden-retriever",
+            "website_url": "https://www.pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/puppies-dogs/large-dogs/golden-retriever"
+        },
+        {
+            "brand_name": "Patriotlandscapesolutions.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMqaMVuG72B7IfYcDhaibT9MkpIXsEciCpbfdvDCEhVgUxjLeW",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "How to Keep Dogs from Destroying Backyard Grass and Plants",
+            "url": "https://patriotlandscapesolutions.com/landscape-design/how-to-keep-dogs-from-destroying-backyard-grass-and-plants/",
+            "website_url": "https://patriotlandscapesolutions.com/landscape-design/how-to-keep-dogs-from-destroying-backyard-grass-and-plants/"
+        },
+        {
+            "brand_name": "Foxcarolina.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ9mNeiByN7IZBXR0-9n8_TdKwbZuwWDRtrXFh7wfTbWXuDdd7R",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Upstate animal shelter asking for community to adopt due to ...",
+            "url": "https://www.foxcarolina.com/2023/06/14/upstate-animal-shelter-asking-community-adopt-due-overflow/",
+            "website_url": "https://www.foxcarolina.com/2023/06/14/upstate-animal-shelter-asking-community-adopt-due-overflow/"
+        },
+        {
+            "brand_name": "Dog-food-reviews.reviews",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTGiqtnW3Ti8q4eJCeEFvIuqa-ABQGdeoy7SH9Ue52wQIOE7j1R",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Fence Dog Solutions: Innovative Ideas for Keeping Your ...",
+            "url": "https://www.dog-food-reviews.reviews/fence-dog-solutions-innovative-ideas-for-keeping-your-canine-companion-secure-and-happy/",
+            "website_url": "https://www.dog-food-reviews.reviews/fence-dog-solutions-innovative-ideas-for-keeping-your-canine-companion-secure-and-happy/"
+        },
+        {
+            "brand_name": "Burgesspetcare.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSPFPpp0BcU_dTmhA9GYLjH8woRgcRLLaNLHXFGy3g2F5UUn3fN",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Help your Golden Retriever to love life! | Blog | Burgess ...",
+            "url": "https://www.burgesspetcare.com/blog/dogs/help-your-golden-retriever-to-love-life/",
+            "website_url": "https://www.burgesspetcare.com/blog/dogs/help-your-golden-retriever-to-love-life/"
+        },
+        {
+            "brand_name": "Flipkart.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRswFEQrEhv613JXvmSo3X21jpqXRq22-5aC15WyeBKR__h6nY4",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Hd Golden Retriever Puppy Running Labrador Cute Dog Pets ...",
+            "url": "https://www.flipkart.com/hd-golden-retriever-puppy-running-labrador-cute-dog-pets-animals-dogs-n-matte-finish-poster-p-11427-paper-print/p/itmc8bc5cd120d8e",
+            "website_url": "https://www.flipkart.com/hd-golden-retriever-puppy-running-labrador-cute-dog-pets-animals-dogs-n-matte-finish-poster-p-11427-paper-print/p/itmc8bc5cd120d8e"
+        },
+        {
+            "brand_name": "Dogtime.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR3hUBEb-D95DehPvgDEU0DxuDq9sdTVZeFo1jgVxg278zqgZB7",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 43.75,
+            "title": "Golden Retriever Puppy Pictures and Facts",
+            "url": "https://dogtime.com/puppies/41449-golden-retriever-puppies",
+            "website_url": "https://dogtime.com/puppies/41449-golden-retriever-puppies"
+        },
+        {
+            "brand_name": "Alamy.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpxJwT-tHhD0ZU_rGZXl-sNerUQRs69hM6vhGSmBV_LIkXBcwH",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 43.75,
+            "title": "Golden retriever puppy playing at a park field at sunset ...",
+            "url": "https://www.alamy.com/golden-retriever-puppy-playing-at-a-park-field-at-sunset-with-golden-trees-in-the-background-portrait-of-a-cute-puppy-in-a-field-dog-outdoors-image458838342.html",
+            "website_url": "https://www.alamy.com/golden-retriever-puppy-playing-at-a-park-field-at-sunset-with-golden-trees-in-the-background-portrait-of-a-cute-puppy-in-a-field-dog-outdoors-image458838342.html"
+        },
+        {
+            "brand_name": "Pngtree.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfcZaVyUGo5JK5hN8uRGPZscBvcdgvz17LeRQVXvcYQ-mhv2tk",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 40.625,
+            "title": "Adorable Golden Retriever Puppy Sitting On Lush Green Grass ...",
+            "url": "https://pngtree.com/freebackground/adorable-golden-retriever-puppy-sitting-on-lush-green-grass-in-the-sunlight_19488651.html",
+            "website_url": "https://pngtree.com/freebackground/adorable-golden-retriever-puppy-sitting-on-lush-green-grass-in-the-sunlight_19488651.html"
+        },
+        {
+            "brand_name": "Stock.adobe.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTst1LEwY06WADY_MVqNpFqZa_3_8h_ZMQpU8BXqPEJjy_grl0l",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 40.625,
+            "title": "Golden Retriever Puppy Images \u2013 Browse 472,862 Stock Photos ...",
+            "url": "https://stock.adobe.com/search?k=golden+retriever+puppy",
+            "website_url": "https://stock.adobe.com/search?k=golden+retriever+puppy"
+        },
+        {
+            "brand_name": "Rover.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRu8gdepx8nSO3V8ebxyhjY_8lA0tpMP7d0P1jwEOpio52koj_-",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 40.625,
+            "title": "Puppy Facts: 25 Stats to Surprise People You Know",
+            "url": "https://www.rover.com/blog/puppy-facts-new-owners/",
+            "website_url": "https://www.rover.com/blog/puppy-facts-new-owners/"
+        },
+        {
+            "brand_name": "Freepik.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcScop89jNqu8EROBt5Rj40ek7v5Ucu7fqqACGp9TMdpE1WZ-7NB",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 40.625,
+            "title": "Golden retriever puppies Images - Free Download on Freepik",
+            "url": "https://www.freepik.com/free-photos-vectors/golden-retriever-puppies",
+            "website_url": "https://www.freepik.com/free-photos-vectors/golden-retriever-puppies"
+        },
+        {
+            "brand_name": "Thesprucepets.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRIGZrUA9mZF2ld_AZgOhd7QQX8pMT1Jije9egP6cjrbvouIdae",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 37.5,
+            "title": "Why Do People Get Puppies?",
+            "url": "https://www.thesprucepets.com/why-do-people-get-puppies-4047832",
+            "website_url": "https://www.thesprucepets.com/why-do-people-get-puppies-4047832"
+        }
+    ],
+    "similarMatches": [
+        {
+            "brand_name": "Chewy.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_grN5VFK6738HkbXeSkEnDXXi0c-DCICYNZPJZ1DkdWyNhko6",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 90.625,
+            "title": "Golden Retriever Characteristics, Care & Photos | Chewy",
+            "url": "https://www.chewy.com/education/dog-breeds/golden-retriever",
+            "website_url": "https://www.chewy.com/education/dog-breeds/golden-retriever"
+        },
+        {
+            "brand_name": "Marthastewart.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcShODV71BJX89-qzE7ftepZq5DUlGFG70NHVd--i4B1nJ2qHH2O",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 84.375,
+            "title": "The Top Trending Pet Names in the US",
+            "url": "https://www.marthastewart.com/top-trending-pet-names-2025-11847930",
+            "website_url": "https://www.marthastewart.com/top-trending-pet-names-2025-11847930"
+        },
+        {
+            "brand_name": "En.as.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTwXJmTjbCiuq_uBaZMtarNFTOMnSqaV4qmL4TndWDH4EJcJtFd",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 68.75,
+            "title": "Trying to choose a name for your dog? These are the most ...",
+            "url": "https://en.as.com/latest_news/trying-to-choose-a-name-for-your-dog-these-are-the-most-common-puppy-names-by-state-n/",
+            "website_url": "https://en.as.com/latest_news/trying-to-choose-a-name-for-your-dog-these-are-the-most-common-puppy-names-by-state-n/"
+        },
+        {
+            "brand_name": "Photowall.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5KYOlHVZJWhZZK2xbJZSidbtVB5gy9pfgePce4eNZWNoziz-x",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 62.5,
+            "title": "Golden Retriever Puppy \u2013 lovely wall mural \u2013 Photowall",
+            "url": "https://www.photowall.com/us/golden-retriever-puppy-wallpaper",
+            "website_url": "https://www.photowall.com/us/golden-retriever-puppy-wallpaper"
+        },
+        {
+            "brand_name": "Purina.co.uk",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRP0ziVS5qNNpdqnaX838ivba7eieJ41K1dJLUy138a8KOBAV6g",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 62.5,
+            "title": "Golden Retriever Dog Breed Information | Purina UK",
+            "url": "https://www.purina.co.uk/find-a-pet/dog-breeds/golden-retriever",
+            "website_url": "https://www.purina.co.uk/find-a-pet/dog-breeds/golden-retriever"
+        },
+        {
+            "brand_name": "Instagram.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSGV3YKKWFWdkWQCsvV8Hu3eL14IJrg3EFhwaNAwAT3i6p6qLv_",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 62.5,
+            "title": "\"This is my second puppy and both experiences have been ...",
+            "url": "https://www.instagram.com/p/DL-2CJZAFUC/",
+            "website_url": "https://www.instagram.com/p/DL-2CJZAFUC/"
+        },
+        {
+            "brand_name": "Thepuppyacademy.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRDT7a6wdtM_MqpMVyDErccWc3OQoQw01_2BhGMfGQPFFDP0UTB",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 59.375,
+            "title": "Celebrate National Pet Month! \u2014 The Puppy Academy",
+            "url": "https://www.thepuppyacademy.com/blog/2022/5/2/celebrate-national-pet-month",
+            "website_url": "https://www.thepuppyacademy.com/blog/2022/5/2/celebrate-national-pet-month"
+        },
+        {
+            "brand_name": "A-z-animals.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRQMZ0jWOgnmGuR7VspphyPTxU7Vq-3JmidL_sZ6XhLGho_tFhb",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 59.375,
+            "title": "Golden Retriever Animal Pictures | A-Z Animals",
+            "url": "https://a-z-animals.com/animals/golden-retriever/pictures/",
+            "website_url": "https://a-z-animals.com/animals/golden-retriever/pictures/"
+        },
+        {
+            "brand_name": "Istockphoto.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRnEyrz6fxTw6J6XRGaAqhGIDyWH-_DmnnoaVZpPTJK03-0SDr8",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 59.375,
+            "title": "33,300+ Golden Retriever Puppies Stock Photos, Pictures ...",
+            "url": "https://www.istockphoto.com/photos/golden-retriever-puppies",
+            "website_url": "https://www.istockphoto.com/photos/golden-retriever-puppies"
+        },
+        {
+            "brand_name": "Stocksy.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSnMYdiMzRH9qZxUayq-e_nY62NioXyidxmTzn9S3mI7uOoBxFg",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 59.375,
+            "title": "Golden Retriever Puppy Laying On Grass\" by Stocksy ...",
+            "url": "https://www.stocksy.com/photo/2150172/golden-retriever-puppy-laying-on-grass",
+            "website_url": "https://www.stocksy.com/photo/2150172/golden-retriever-puppy-laying-on-grass"
+        },
+        {
+            "brand_name": "Youtube.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgM54TJUAlvoVhBdxyhyy80pnSnq4mD0LYy1QboVFEqyZDSduX",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 56.25,
+            "title": "Fear and Hunger 2 Blind First time - YouTube",
+            "url": "https://www.youtube.com/watch?v=Pz_llWVXaMM",
+            "website_url": "https://www.youtube.com/watch?v=Pz_llWVXaMM"
+        },
+        {
+            "brand_name": "Yahoo.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHTXmqVdlbiZAj909i4bokQZPTEYSp1jJ-g7Hg2ijD6KW4qoB8",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 56.25,
+            "title": "25 Cute Dog Breeds You Won't Be Able To Resist",
+            "url": "https://www.yahoo.com/lifestyle/25-cute-dog-breeds-wont-021247912.html",
+            "website_url": "https://www.yahoo.com/lifestyle/25-cute-dog-breeds-wont-021247912.html"
+        },
+        {
+            "brand_name": "Dogpackapp.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG5-Bk8XgkWMwaPAoqk8XmOb6K9eu--HdqlpFnohDm9Lmns95h",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 56.25,
+            "title": "Golden Retriever: The Friendly, Loyal, and Intelligent Companion",
+            "url": "https://www.dogpackapp.com/blog/dog-breeds/golden-retriever/",
+            "website_url": "https://www.dogpackapp.com/blog/dog-breeds/golden-retriever/"
+        },
+        {
+            "brand_name": "Carecredit.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR5tbhyDdlP6WtwV1FSu_6wElyN20jAWAW3uQZf531XnWFZehtr",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 56.25,
+            "title": "Golden Retriever Dog Breed Health and Wellness Guide",
+            "url": "https://www.carecredit.com/well-u/pet-care/golden-retriever-dog-breed/",
+            "website_url": "https://www.carecredit.com/well-u/pet-care/golden-retriever-dog-breed/"
+        },
+        {
+            "brand_name": "Weenect.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuY4knwUQIRhy3rb8RIGJ3VnN1_HvvCJdVtvn6sOA2ItQ6sfKC",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 56.25,
+            "title": "The Golden Retriever: origin, temperament, health and price",
+            "url": "https://www.weenect.com/us/en/guide/dog-breeds/golden-retriever/",
+            "website_url": "https://www.weenect.com/us/en/guide/dog-breeds/golden-retriever/"
+        },
+        {
+            "brand_name": "Animalhearted.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSOmogxu3tRXZc7IJSzxpdTHPipxr-dF6yBjDRUREKldchathRo",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "Cute Golden Retriever Puppies: Best Pictures To Make Your ...",
+            "url": "https://www.animalhearted.com/blogs/animal-blog/62093379-squee-alert-golden-retriever-puppies",
+            "website_url": "https://www.animalhearted.com/blogs/animal-blog/62093379-squee-alert-golden-retriever-puppies"
+        },
+        {
+            "brand_name": "Facebook.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQH4dx1XalXxKoYEIhlejVB7Szpq_MmKuyLdVG7wJsUkF2HTBzn",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "When's the right time to safely spay or neuter your dog ...",
+            "url": "https://www.facebook.com/UCDavis/posts/whens-the-right-time-to-safely-spay-or-neuter-your-dog-a-new-10-year-study-by-uc/906816141492604/",
+            "website_url": "https://www.facebook.com/UCDavis/posts/whens-the-right-time-to-safely-spay-or-neuter-your-dog-a-new-10-year-study-by-uc/906816141492604/"
+        },
+        {
+            "brand_name": "Paradepets.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRXT9wNIMLw5EMt1jyGo0qMlp957CoZzvElmHrCUA9DDb6dt8qG",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "Golden Retriever Puppy Fakes Amnesia To Avoid Conflict and ...",
+            "url": "https://paradepets.com/pet-news/golden-retriever-puppy-fakes-amnesia-to-avoid-conflict-priceless",
+            "website_url": "https://paradepets.com/pet-news/golden-retriever-puppy-fakes-amnesia-to-avoid-conflict-priceless"
+        },
+        {
+            "brand_name": "Kippy.eu",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWd2jFts8mgU8YFGOxH3GTc4WOMFi2W75f53o_Mtpwvy8b1683",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "Golden Retriever puppies: how to train and find the right ...",
+            "url": "https://www.kippy.eu/blog/en/golden-retriever-puppies-2/",
+            "website_url": "https://www.kippy.eu/blog/en/golden-retriever-puppies-2/"
+        },
+        {
+            "brand_name": "Acrossthepondpet.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSlsN438ZkHFyjJNIFCplWbVKRgAaICAbBTDe2lCDZVvzeLCUU3",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "New Rule: No Dogs Younger Than 6 Months Allowed in the USA ...",
+            "url": "https://www.acrossthepondpet.com/resources/blog/119-new-rule-no-dogs-younger-than-6-months-allowed-in-the-usa-from-august-1-2024",
+            "website_url": "https://www.acrossthepondpet.com/resources/blog/119-new-rule-no-dogs-younger-than-6-months-allowed-in-the-usa-from-august-1-2024"
+        },
+        {
+            "brand_name": "Aol.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS1q4C672D8SYPNiwUiTG6eZogWSQfX4_RvG2Nr9Zc_9-xblwm0",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "Family Wants to Give Up Their 'Perfect Puppy' Just 2 Weeks ...",
+            "url": "https://www.aol.com/family-wants-perfect-puppy-just-210000196.html",
+            "website_url": "https://www.aol.com/family-wants-perfect-puppy-just-210000196.html"
+        },
+        {
+            "brand_name": "People.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6wcmPDHpBgOao9pApuSlZNRhXupeVKj11HuEl9cjrPzTiH2nL",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 53.125,
+            "title": "Family Wants to Give Up 'Perfect Puppy' Just 2 Weeks After ...",
+            "url": "https://people.com/family-wants-to-give-up-perfect-puppy-weeks-after-bringing-her-home-11755819",
+            "website_url": "https://people.com/family-wants-to-give-up-perfect-puppy-weeks-after-bringing-her-home-11755819"
+        },
+        {
+            "brand_name": "Akc.org",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTyOHs_cOO9QhW8aN7RbDGyKC-wisP7LnuEM-f1tYOHg9rVaWLs",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 50.0,
+            "title": "How to Train a Golden Retriever Puppy: Growth & Training ...",
+            "url": "https://www.akc.org/expert-advice/dog-breeds/golden-retriever-puppy-training-timeline/",
+            "website_url": "https://www.akc.org/expert-advice/dog-breeds/golden-retriever-puppy-training-timeline/"
+        },
+        {
+            "brand_name": "Psu.edu",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv-VnnB-DnJdAHycMYI4Wm2Yrp-9p88nGTomL5iD3phTeZcXYQ",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 50.0,
+            "title": "Penn State Extension introduces canine program to support ...",
+            "url": "https://www.psu.edu/news/agricultural-sciences/story/penn-state-extension-introduces-canine-program-support-dog-breeders",
+            "website_url": "https://www.psu.edu/news/agricultural-sciences/story/penn-state-extension-introduces-canine-program-support-dog-breeders"
+        },
+        {
+            "brand_name": "Pets4homes.co.uk",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSZRaYAWzvxoNuXaMe8Z_nRLBo30ZY5W_pnnyqS1FVcgBLisesg",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 50.0,
+            "title": "10 Essential Facts About Golden Retrievers Before Buying ...",
+            "url": "https://www.pets4homes.co.uk/pet-advice/ten-things-you-need-to-know-about-the-golden-retriever-before-you-buy-one.html",
+            "website_url": "https://www.pets4homes.co.uk/pet-advice/ten-things-you-need-to-know-about-the-golden-retriever-before-you-buy-one.html"
+        },
+        {
+            "brand_name": "Moderndogmagazine.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQbdU6cODpUPjuTM8cATGEh6a36DKCHxx1YyLQmdiHWREk6BxqQ",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 50.0,
+            "title": "The Golden Retriever Dog Breed Profile: Characteristics ...",
+            "url": "https://moderndogmagazine.com/articles/breeds/the-golden-retriever/",
+            "website_url": "https://moderndogmagazine.com/articles/breeds/the-golden-retriever/"
+        },
+        {
+            "brand_name": "Headtotailcaninenutrition.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTkDj_60LRteCIJWPV_dtvrpzDGYAKi1FTX6s9ai-2SXImBETNY",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 50.0,
+            "title": "What Happens to Dogs When Luteinizing Hormones Are Removed ...",
+            "url": "https://headtotailcaninenutrition.com/blogs/head-to-tail-canine-nutrition/what-happens-to-dogs-when-luteinizing-hormones-are-removed",
+            "website_url": "https://headtotailcaninenutrition.com/blogs/head-to-tail-canine-nutrition/what-happens-to-dogs-when-luteinizing-hormones-are-removed"
+        },
+        {
+            "brand_name": "Vecteezy.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTbsOKzXv5N4tdiJkccjd4Mn1455t9cF55Y54gdK0PuixOI4vJs",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Adorable Golden Retriever Puppy Playing in a Sunny Yellow ...",
+            "url": "https://www.vecteezy.com/photo/57162718-adorable-golden-retriever-puppy-playing-in-a-sunny-yellow-flower-meadow",
+            "website_url": "https://www.vecteezy.com/photo/57162718-adorable-golden-retriever-puppy-playing-in-a-sunny-yellow-flower-meadow"
+        },
+        {
+            "brand_name": "Today.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRISueKjyWLGLwsl1zvTQGXDS0bQ4HhclPCWbILz1nQET3UFLw-",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "7 mistakes new dog owners make and how to avoid them",
+            "url": "https://www.today.com/pets/7-mistakes-new-dog-owners-make-how-avoid-them-t120341",
+            "website_url": "https://www.today.com/pets/7-mistakes-new-dog-owners-make-how-avoid-them-t120341"
+        },
+        {
+            "brand_name": "Shutterstock.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRdPtUMH9yLMx4XSwsdLEEyEOFT8zkcmqwrXcR2aOoU9aDbxNPD",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Puppy Dog Golden Retriever Labrador 1 Stock Photo 2669424207 ...",
+            "url": "https://www.shutterstock.com/image-photo/puppy-dog-retriever-labrador-1-month-2669424207",
+            "website_url": "https://www.shutterstock.com/image-photo/puppy-dog-retriever-labrador-1-month-2669424207"
+        },
+        {
+            "brand_name": "Pdsa.org.uk",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc-jhvmTW1Gobxsto_v00huxIAjnMSoL55rNqlu-HfFYDE9Qcz",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Golden Retriever - PDSA",
+            "url": "https://www.pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/puppies-dogs/large-dogs/golden-retriever",
+            "website_url": "https://www.pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/puppies-dogs/large-dogs/golden-retriever"
+        },
+        {
+            "brand_name": "Patriotlandscapesolutions.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMqaMVuG72B7IfYcDhaibT9MkpIXsEciCpbfdvDCEhVgUxjLeW",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "How to Keep Dogs from Destroying Backyard Grass and Plants",
+            "url": "https://patriotlandscapesolutions.com/landscape-design/how-to-keep-dogs-from-destroying-backyard-grass-and-plants/",
+            "website_url": "https://patriotlandscapesolutions.com/landscape-design/how-to-keep-dogs-from-destroying-backyard-grass-and-plants/"
+        },
+        {
+            "brand_name": "Foxcarolina.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ9mNeiByN7IZBXR0-9n8_TdKwbZuwWDRtrXFh7wfTbWXuDdd7R",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Upstate animal shelter asking for community to adopt due to ...",
+            "url": "https://www.foxcarolina.com/2023/06/14/upstate-animal-shelter-asking-community-adopt-due-overflow/",
+            "website_url": "https://www.foxcarolina.com/2023/06/14/upstate-animal-shelter-asking-community-adopt-due-overflow/"
+        },
+        {
+            "brand_name": "Dog-food-reviews.reviews",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTGiqtnW3Ti8q4eJCeEFvIuqa-ABQGdeoy7SH9Ue52wQIOE7j1R",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Fence Dog Solutions: Innovative Ideas for Keeping Your ...",
+            "url": "https://www.dog-food-reviews.reviews/fence-dog-solutions-innovative-ideas-for-keeping-your-canine-companion-secure-and-happy/",
+            "website_url": "https://www.dog-food-reviews.reviews/fence-dog-solutions-innovative-ideas-for-keeping-your-canine-companion-secure-and-happy/"
+        },
+        {
+            "brand_name": "Burgesspetcare.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSPFPpp0BcU_dTmhA9GYLjH8woRgcRLLaNLHXFGy3g2F5UUn3fN",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Help your Golden Retriever to love life! | Blog | Burgess ...",
+            "url": "https://www.burgesspetcare.com/blog/dogs/help-your-golden-retriever-to-love-life/",
+            "website_url": "https://www.burgesspetcare.com/blog/dogs/help-your-golden-retriever-to-love-life/"
+        },
+        {
+            "brand_name": "Flipkart.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRswFEQrEhv613JXvmSo3X21jpqXRq22-5aC15WyeBKR__h6nY4",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 46.875,
+            "title": "Hd Golden Retriever Puppy Running Labrador Cute Dog Pets ...",
+            "url": "https://www.flipkart.com/hd-golden-retriever-puppy-running-labrador-cute-dog-pets-animals-dogs-n-matte-finish-poster-p-11427-paper-print/p/itmc8bc5cd120d8e",
+            "website_url": "https://www.flipkart.com/hd-golden-retriever-puppy-running-labrador-cute-dog-pets-animals-dogs-n-matte-finish-poster-p-11427-paper-print/p/itmc8bc5cd120d8e"
+        },
+        {
+            "brand_name": "Dogtime.com",
+            "copied_image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR3hUBEb-D95DehPvgDEU0DxuDq9sdTVZeFo1jgVxg278zqgZB7",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 43.75,
+            "title": "Golden Retriever Puppy Pictures and Facts",
+            "url": "https://dogtime.com/puppies/41449-golden-retriever-puppies",
+            "website_url": "https://dogtime.com/puppies/41449-golden-retriever-puppies"
+        },
+        {
+            "brand_name": "Alamy.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpxJwT-tHhD0ZU_rGZXl-sNerUQRs69hM6vhGSmBV_LIkXBcwH",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 43.75,
+            "title": "Golden retriever puppy playing at a park field at sunset ...",
+            "url": "https://www.alamy.com/golden-retriever-puppy-playing-at-a-park-field-at-sunset-with-golden-trees-in-the-background-portrait-of-a-cute-puppy-in-a-field-dog-outdoors-image458838342.html",
+            "website_url": "https://www.alamy.com/golden-retriever-puppy-playing-at-a-park-field-at-sunset-with-golden-trees-in-the-background-portrait-of-a-cute-puppy-in-a-field-dog-outdoors-image458838342.html"
+        },
+        {
+            "brand_name": "Pngtree.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfcZaVyUGo5JK5hN8uRGPZscBvcdgvz17LeRQVXvcYQ-mhv2tk",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 40.625,
+            "title": "Adorable Golden Retriever Puppy Sitting On Lush Green Grass ...",
+            "url": "https://pngtree.com/freebackground/adorable-golden-retriever-puppy-sitting-on-lush-green-grass-in-the-sunlight_19488651.html",
+            "website_url": "https://pngtree.com/freebackground/adorable-golden-retriever-puppy-sitting-on-lush-green-grass-in-the-sunlight_19488651.html"
+        },
+        {
+            "brand_name": "Stock.adobe.com",
+            "copied_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTst1LEwY06WADY_MVqNpFqZa_3_8h_ZMQpU8BXqPEJjy_grl0l",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 40.625,
+            "title": "Golden Retriever Puppy Images \u2013 Browse 472,862 Stock Photos ...",
+            "url": "https://stock.adobe.com/search?k=golden+retriever+puppy",
+            "website_url": "https://stock.adobe.com/search?k=golden+retriever+puppy"
+        },
+        {
+            "brand_name": "Rover.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRu8gdepx8nSO3V8ebxyhjY_8lA0tpMP7d0P1jwEOpio52koj_-",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 40.625,
+            "title": "Puppy Facts: 25 Stats to Surprise People You Know",
+            "url": "https://www.rover.com/blog/puppy-facts-new-owners/",
+            "website_url": "https://www.rover.com/blog/puppy-facts-new-owners/"
+        },
+        {
+            "brand_name": "Freepik.com",
+            "copied_image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcScop89jNqu8EROBt5Rj40ek7v5Ucu7fqqACGp9TMdpE1WZ-7NB",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 40.625,
+            "title": "Golden retriever puppies Images - Free Download on Freepik",
+            "url": "https://www.freepik.com/free-photos-vectors/golden-retriever-puppies",
+            "website_url": "https://www.freepik.com/free-photos-vectors/golden-retriever-puppies"
+        },
+        {
+            "brand_name": "Thesprucepets.com",
+            "copied_image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRIGZrUA9mZF2ld_AZgOhd7QQX8pMT1Jije9egP6cjrbvouIdae",
+            "emails": [],
+            "match_type": "Similar Match",
+            "similarity_score": 37.5,
+            "title": "Why Do People Get Puppies?",
+            "url": "https://www.thesprucepets.com/why-do-people-get-puppies-4047832",
+            "website_url": "https://www.thesprucepets.com/why-do-people-get-puppies-4047832"
+        }
+    ],
+    "uploaded_image": "http://127.0.0.1:5001/uploads/63dcac21-8df2-42df-97c0-1994d466ef0c_temp_puppy.jpg"
+}

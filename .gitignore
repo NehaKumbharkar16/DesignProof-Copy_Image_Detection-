@@ -1,0 +1,49 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+web_modules/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+
+# Environmental variables / secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# Varnish/system files
+.DS_Store
+Thumbs.db
+
+# Python virtual environment & cache
+venv/
+.venv/
+env/
+.env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ipynb_checkpoints/
+discovery_debug.log
+notices.db
+
+# Temporary uploads / catalogs
+backend/python_service/uploads/
+uploads/
+
+# Local editor configurations
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
