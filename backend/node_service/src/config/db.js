@@ -3,23 +3,36 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export const sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,
-    {
-        host: process.env.DB_HOST,
-        port: process.env.DB_PORT,
+const isProduction = process.env.NODE_ENV === 'production';
+
+export const sequelize = process.env.DATABASE_URL
+    ? new Sequelize(process.env.DATABASE_URL, {
         dialect: 'postgres',
-        logging: console.log, // Turn on logging to see what's happening
-        dialectOptions: process.env.NODE_ENV === 'production' ? {
+        logging: console.log,
+        dialectOptions: isProduction ? {
             ssl: {
                 require: true,
                 rejectUnauthorized: false
             }
         } : {}
-    }
-);
+      })
+    : new Sequelize(
+        process.env.DB_NAME,
+        process.env.DB_USER,
+        process.env.DB_PASSWORD,
+        {
+            host: process.env.DB_HOST,
+            port: process.env.DB_PORT,
+            dialect: 'postgres',
+            logging: console.log,
+            dialectOptions: isProduction ? {
+                ssl: {
+                    require: true,
+                    rejectUnauthorized: false
+                }
+            } : {}
+        }
+      );
 
 export const connectDB = async () => {
     try {
