@@ -5,6 +5,15 @@ dotenv.config();
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+console.log('[DB Debug] isProduction:', isProduction);
+console.log('[DB Debug] process.env.NODE_ENV:', process.env.NODE_ENV);
+console.log('[DB Debug] DATABASE_URL is present:', !!process.env.DATABASE_URL);
+if (process.env.DATABASE_URL) {
+    console.log('[DB Debug] DATABASE_URL starts with:', process.env.DATABASE_URL.substring(0, 15) + '...');
+} else {
+    console.log('[DB Debug] DATABASE_URL is not set. Falling back to DB_HOST:', process.env.DB_HOST);
+}
+
 export const sequelize = process.env.DATABASE_URL
     ? new Sequelize(process.env.DATABASE_URL, {
         dialect: 'postgres',
