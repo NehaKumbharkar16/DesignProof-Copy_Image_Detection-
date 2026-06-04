@@ -9,10 +9,12 @@ import { connectDB } from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import placeholderRoutes from './routes/placeholderRoutes.js';
+import productRoutes from './routes/productRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 import noticeRoutes from './routes/noticeRoutes.js';
 import detectionRoutes from './routes/detectionRoutes.js';
 import subscriptionRoutes from './routes/subscriptionRoutes.js';
+import monitoringRoutes from './routes/monitoring.js';
 import { protect } from './middlewares/authMiddleware.js';
 import session from 'express-session';
 import passport from './config/passport.js';
@@ -62,11 +64,12 @@ app.use('/api', limiter);
 app.use('/api/auth', authRoutes);
 app.use('/api/users', protect, userRoutes);
 app.use('/api/brands', placeholderRoutes);
-app.use('/api/products', placeholderRoutes);
+app.use('/api/products', productRoutes);
 app.use('/api/detections', detectionRoutes);
 app.use('/api/takedowns', placeholderRoutes);
 app.use('/api/subscriptions', protect, subscriptionRoutes);
 app.use('/api/notices', protect, noticeRoutes);
+app.use('/api/monitoring', protect, monitoringRoutes);
 
 // Gateway Routes that proxy to Python Service
 app.use('/', uploadRoutes);

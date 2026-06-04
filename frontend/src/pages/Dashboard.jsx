@@ -11,6 +11,25 @@ import { motion, AnimatePresence } from 'framer-motion'
 import api from '../services/api'
 import toast, { Toaster } from 'react-hot-toast'
 
+const parseUrlSafely = (urlStr) => {
+    try {
+        if (!urlStr) {
+            return { hostname: 'unknown-platform.com', href: '#' };
+        }
+        let cleanUrl = urlStr.trim();
+        if (!/^https?:\/\//i.test(cleanUrl)) {
+            cleanUrl = 'https://' + cleanUrl;
+        }
+        const parsed = new URL(cleanUrl);
+        return {
+            hostname: parsed.hostname || 'unknown-platform.com',
+            href: parsed.href
+        };
+    } catch (e) {
+        return { hostname: 'unknown-platform.com', href: urlStr || '#' };
+    }
+};
+
 // --- SKELETON LOADER ---
 const Skeleton = ({ className }) => (
   <div className={`animate-pulse bg-slate-200 dark:bg-slate-800 rounded ${className}`}></div>
@@ -74,12 +93,12 @@ export default function Dashboard() {
       // Group by original image to create a history
       const grouped = res.data.data.reduce((acc, curr) => {
         // Group by product name + date to keep scans separate and organized
-        const key = curr.id || curr.productName 
+        const key = curr.productId || curr.productName 
         if (!acc[key]) {
           acc[key] = { 
-            id: curr.id,
+            id: curr.productId || curr.id,
             name: curr.productName,
-            image: curr.image || 'https://via.placeholder.com/100?text=Design',
+            image: curr.productImage || curr.image || 'https://via.placeholder.com/100?text=Design',
             date: curr.dateFound,
             fullDate: curr.createdAt || new Date().toISOString(),
             matches: 0,
@@ -499,10 +518,10 @@ export default function Dashboard() {
         </div>
         <div className="lg:col-span-3">
            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-full">
-             <StatMiniCard title="Processing Time" value={scanResults ? scanResults.scan_duration || "3.2s" : (history.length > 0 ? "2.8s" : "--")} icon={<Clock className="text-blue-500" />} />
-             <StatMiniCard title="Links Found" value={scanResults ? (scanResults.matching_websites?.length || 0) : history.reduce((a, b) => a + (b.results?.length || 0), 0)} icon={<LinkIcon className="text-brand-forest" />} />
-             <StatMiniCard title="High Risk" value={scanResults ? (scanResults.exactMatches?.length || 0) : history.reduce((sum, item) => sum + (item.results || []).filter(r => (r.similarity_score || r.similarity) >= 99).length, 0)} icon={<AlertTriangle className="text-red-500" />} />
-             <StatMiniCard title="Emails Sent" value={emailsSent} icon={<Mail className="text-purple-500" />} />
+             <StatMiniCard title="Processing Time" value={scanResults ? scanResults.scan_duration || "3.2s" : (history.length > 0 ? "2.8s" : "--")} icon={<Clock className="text-blue-500" />} onClick={() => navigate('/history')} />
+             <StatMiniCard title="Links Found" value={scanResults ? (scanResults.matching_websites?.length || 0) : history.reduce((a, b) => a + (b.results?.length || 0), 0)} icon={<LinkIcon className="text-brand-forest" />} onClick={() => navigate('/matches')} />
+             <StatMiniCard title="High Risk" value={scanResults ? (scanResults.exactMatches?.length || 0) : history.reduce((sum, item) => sum + (item.results || []).filter(r => (r.similarity_score || r.similarity) >= 99).length, 0)} icon={<AlertTriangle className="text-red-500" />} onClick={() => navigate('/matches')} />
+             <StatMiniCard title="Emails Sent" value={emailsSent} icon={<Mail className="text-purple-500" />} onClick={() => navigate('/takedowns')} />
            </div>
         </div>
       </div>
@@ -733,14 +752,25 @@ function UploadCard({ onUpload, isUploading, progress }) {
   )
 }
 
-function StatMiniCard({ title, value, icon }) {
+function StatMiniCard({ title, value, icon, onClick, tooltip }) {
   return (
-    <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all flex items-center gap-4">
+    <div 
+      onClick={onClick}
+      title={tooltip}
+      className={`bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all flex items-center gap-4 ${
+        onClick ? 'cursor-pointer active:scale-[0.97] hover:border-brand-forest/40 dark:hover:border-brand-gold/40' : ''
+      }`}
+    >
       <div className="p-2 bg-slate-50 dark:bg-slate-800 rounded-lg">{icon}</div>
       <div>
         <div className="text-[10px] font-bold text-slate-600 uppercase tracking-widest leading-none mb-1">{title}</div>
         <div className="text-xl font-bold text-slate-800 dark:text-white leading-none">{value}</div>
       </div>
+      {onClick && (
+        <div className="ml-auto text-slate-300 dark:text-slate-600">
+          <ArrowRight size={14} />
+        </div>
+      )}
     </div>
   )
 }
@@ -784,7 +814,7 @@ function ResultCard({ data, onViewDetails, onSendEmail }) {
             <div className="min-w-0">
               <h4 className="font-bold text-slate-800 dark:text-white truncate mb-0.5">{data.title || "Infringing Design Discovery"}</h4>
               <div className="flex items-center gap-2 text-xs text-slate-500">
-                <span className="font-bold text-slate-700 dark:text-slate-300">{data.brand_name || new URL(data.url || data.link).hostname.replace('www.', '')}</span>
+                <span className="font-bold text-slate-700 dark:text-slate-300">{data.brand_name || parseUrlSafely(data.url || data.link).hostname.replace('www.', '')}</span>
                 <span>•</span>
                 <span className="truncate">{data.url || data.link}</span>
               </div>
@@ -865,7 +895,7 @@ function DetailsModal({ data, onClose, onAction }) {
             
             <div className="space-y-3">
               <DetailRow label="Confidence" value={`${Math.round(data.similarity_score)}% (${data.match_type})`} />
-              <DetailRow label="Domain" value={new URL(data.url || data.link).hostname} />
+              <DetailRow label="Domain" value={parseUrlSafely(data.url || data.link).hostname} />
               <DetailRow label="Detected Email" value={data.emails?.[0]?.email || "Looking for contact..."} />
             </div>
 
@@ -899,7 +929,7 @@ function DetailRow({ label, value }) {
 }
 
 function EmailModal({ data, onClose, onEmailSent }) {
-  const domain = new URL(data.url || data.link).hostname
+  const domain = parseUrlSafely(data.url || data.link).hostname
   const [status, setStatus] = useState('idle') // idle, sending, success
   const [subject, setSubject] = useState(`URGENT: Copyright Infringement Notice - ${domain}`)
   const [message, setMessage] = useState(
@@ -933,6 +963,7 @@ Sincerely,
     setStatus('sending')
     try {
       await api.post('/api/notices', {
+        detected_match_id: data.id,
         email: data.emails?.[0]?.email || 'support@' + domain,
         website_url: data.url || data.link,
         subject: subject,

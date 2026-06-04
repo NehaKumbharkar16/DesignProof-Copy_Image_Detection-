@@ -182,29 +182,43 @@ def upload_to_tmpfiles(file_path):
     return None
 
 def upload_to_catbox(file_path):
-    """Hosts an image on Litterbox (Catbox) for SerpAPI access"""
+    """Hosts an image on Litterbox/Catbox/file.io for SerpAPI access"""
+    # 1. Try Litterbox (Temporary 24h upload)
     try:
-        url = "https://litterbox.catbox.moe/objects.php"
+        url = "https://litterbox.catbox.moe/resources/internals/api.php"
         with open(file_path, "rb") as f:
             files = {"fileToUpload": f}
-            data = {"reqtype": "fileupload", "time": "12h"}
-            response = http_session.post(url, files=files, data=data, timeout=10)
-            if response.status_code == 200 and response.text.startswith("http"):
+            data = {"reqtype": "fileupload", "time": "24h"}
+            response = http_session.post(url, files=files, data=data, timeout=15, verify=False)
+            if response.status_code == 200 and response.text.strip().startswith("http"):
+                return response.text.strip()
+    except Exception as e:
+        safe_print(f"[WARN] Litterbox upload failed: {e}")
+        
+    # 2. Try Catbox (Permanent upload)
+    try:
+        url = "https://catbox.moe/user/api.php"
+        with open(file_path, "rb") as f:
+            files = {"fileToUpload": f}
+            data = {"reqtype": "fileupload"}
+            response = http_session.post(url, files=files, data=data, timeout=15, verify=False)
+            if response.status_code == 200 and response.text.strip().startswith("http"):
                 return response.text.strip()
     except Exception as e:
         safe_print(f"[WARN] Catbox upload failed: {e}")
     
+    # 3. Fallback to file.io
     try:
-        # Fallback to file.io
         url = "https://file.io/?expires=1d"
         with open(file_path, "rb") as f:
-            response = http_session.post(url, files={"file": f}, timeout=10)
+            response = http_session.post(url, files={"file": f}, timeout=15, verify=False)
             if response.status_code == 200:
                 return response.json().get("link")
     except Exception as e:
         safe_print(f"[WARN] file.io upload failed: {e}")
         
     return None
+
 
 # --- ROUTES ---
 
@@ -435,6 +449,8 @@ def upload_image():
         similar = [m for m in websites_data if m['match_type'] == "Similar Match"]
         return jsonify({
             "uploaded_image": public_url,
+            "public_search_url": public_search_url,
+            "p_hash": str(original_m_hash['p']) if original_m_hash else "0",
             "exactMatches": exact,
             "similarMatches": similar,
             "matching_websites": websites_data,

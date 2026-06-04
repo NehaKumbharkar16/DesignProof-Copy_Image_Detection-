@@ -23,6 +23,14 @@ const Product = sequelize.define('Product', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    public_search_url: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    phash_code: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     priority: {
         type: DataTypes.STRING,
         defaultValue: 'medium'

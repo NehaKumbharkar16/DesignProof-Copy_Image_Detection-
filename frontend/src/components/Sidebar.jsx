@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import {
   LayoutDashboard, ShoppingBag, Radio, ShieldAlert,
   FileText, CreditCard, Settings, Users, Layers,
-  FileBox, Activity, Menu, Zap
+  FileBox, Activity, Menu, Zap, Clock, ShieldCheck
 } from 'lucide-react'
 
 export default function Sidebar() {
@@ -51,6 +51,10 @@ export default function Sidebar() {
               <ShoppingBag size={20} />
               <span className="font-medium">Products</span>
             </NavLink>
+            <NavLink to="/history" className={linkClass}>
+              <Clock size={20} />
+              <span className="font-medium">Scan History</span>
+            </NavLink>
             <NavLink to="/monitoring" className={linkClass}>
               <Radio size={20} />
               <span className="font-medium">Monitoring</span>
@@ -78,6 +82,10 @@ export default function Sidebar() {
             <NavLink to="/settings" className={linkClass}>
               <Settings size={20} />
               <span className="font-medium">Settings</span>
+            </NavLink>
+            <NavLink to="/authority" className={linkClass}>
+              <ShieldCheck size={20} />
+              <span className="font-medium">IP Authority</span>
             </NavLink>
           </nav>
 

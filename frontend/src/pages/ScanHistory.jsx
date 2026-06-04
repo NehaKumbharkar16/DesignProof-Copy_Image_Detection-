@@ -1,6 +1,6 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react'
-import { Search, Loader2, AlertCircle, CheckCircle2, Mail, X, ShieldCheck, Upload, ExternalLink, Send, FileText, Image as ImageIcon, Edit, Zap, Clock, Trash2 } from 'lucide-react'
-import { useDropzone } from 'react-dropzone'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Search, Loader2, AlertCircle, CheckCircle2, Mail, X, ShieldCheck, ExternalLink, Send, FileText, Image as ImageIcon, Edit, Zap, Clock, Trash2 } from 'lucide-react'
 import api from '../services/api'
 
 const parseUrlSafely = (urlStr) => {
@@ -22,61 +22,17 @@ const parseUrlSafely = (urlStr) => {
     }
 };
 
-export default function Products() {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [selectedFile, setSelectedFile] = useState(null);
+export default function ScanHistory() {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState(null);
   const [scanTime, setScanTime] = useState(null);
   const [error, setError] = useState(null);
   const [filterMode, setFilterMode] = useState('all'); // 'all', 'exact', 'similar'
   const [publicSearchUrl, setPublicSearchUrl] = useState(null);
-  const [activeProductId, setActiveProductId] = useState(null);
-
-  
-  useEffect(() => {
-    const cached = localStorage.getItem('last_scan_result');
-    if (cached) {
-      try {
-        const parsed = JSON.parse(cached);
-        if (parsed.productId) {
-          setSelectedImage(parsed.selectedImage);
-          setPublicSearchUrl(parsed.publicSearchUrl);
-          setResults(parsed.results);
-          setScanTime(parsed.scanTime);
-          setActiveProductId(parsed.productId);
-        }
-      } catch (e) {
-        console.error("Failed to parse cached scan result", e);
-      }
-    }
-  }, []);
-
-  const handleScanNew = () => {
-    setResults(null);
-    setSelectedImage(null);
-    setFilterMode('all');
-    setPublicSearchUrl(null);
-    setActiveProductId(null);
-    localStorage.removeItem('last_scan_result');
-  };
-
-  const handleDeleteScan = async () => {
-    if (!activeProductId) return;
-    if (!window.confirm("Are you sure you want to delete this scan and all its matched links?")) return;
-    
-    try {
-      await api.delete(`/api/products/${activeProductId}`);
-      handleScanNew();
-    } catch (err) {
-      alert(err.message || "Failed to delete product");
-    }
-  };
-
-  // Real-time scan progress details
-  const [scanProgress, setScanProgress] = useState(0);
-  const [scanStep, setScanStep] = useState('Initializing search...');
-  const [estTimeLeft, setEstTimeLeft] = useState(15);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [history, setHistory] = useState([]);
+  const [selectedProductId, setSelectedProductId] = useState(null);
 
   // Modal States
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -84,128 +40,126 @@ export default function Products() {
   const [isSending, setIsSending] = useState(false);
   const [editableEmail, setEditableEmail] = useState('');
   const [editableContent, setEditableContent] = useState('');
-  const [isEditing, setIsEditing] = useState(false); 
+  const [isEditing, setIsEditing] = useState(false);
 
-  // Dynamic Scan Progress effect
+  const [scanning, setScanning] = useState(false);
+
+  const handleStartScan = async () => {
+    if (scanning || !selectedProductId) return;
+    setScanning(true);
+    try {
+      const res = await api.post('/api/detections/scan', {
+        imageUrl: selectedImage,
+        productId: selectedProductId
+      });
+      alert(`Scan complete! Found ${res.data.results_count} potential matches.`);
+      // Re-load detections for this product to refresh UI
+      await handleSelectProduct({
+        id: selectedProductId,
+        primary_image_url: selectedImage,
+        public_search_url: publicSearchUrl
+      });
+    } catch (err) {
+      console.error('Scan failed', err);
+      alert('Failed to start scan: ' + (err.response?.data?.message || err.message));
+    } finally {
+      setScanning(false);
+    }
+  };
+
+  const fetchHistory = async () => {
+    try {
+      const res = await api.get('/api/products');
+      if (res.data && res.data.data) {
+        setHistory(res.data.data);
+      }
+    } catch (err) {
+      console.error("Error fetching scan history:", err);
+    }
+  };
+
   useEffect(() => {
-    let timer;
-    let progressTimer;
-    
-    if (isLoading) {
-      setScanProgress(0);
-      setEstTimeLeft(15);
-      setScanStep('Initializing deep image feature extraction...');
-      
-      // Est remaining countdown
-      timer = setInterval(() => {
-        setEstTimeLeft((prev) => (prev > 1 ? prev - 1 : 1));
-      }, 1000);
-      
-      // Progress simulation through optimized pipeline steps
-      progressTimer = setInterval(() => {
-        setScanProgress((prev) => {
-          if (prev < 15) {
-            setScanStep('Uploading reference design to global search nodes...');
-            return prev + 4;
-          } else if (prev < 45) {
-            setScanStep('Scanning 500M+ e-commerce & retail platform endpoints...');
-            return prev + 8;
-          } else if (prev < 75) {
-            setScanStep('Parallel fetching e-commerce listing links (pooled socket)...');
-            return prev + 6;
-          } else if (prev < 95) {
-            setScanStep('Finalizing visual AI matching & confidence levels...');
-            return prev + 3;
-          } else {
-            return 98;
-          }
-        });
-      }, 500);
-    } else {
-      setScanProgress(0);
-      setEstTimeLeft(15);
-    }
-    
-    return () => {
-      clearInterval(timer);
-      clearInterval(progressTimer);
-    };
-  }, [isLoading]);
-
-  const onDrop = useCallback(async (acceptedFiles) => {
-    const file = acceptedFiles[0];
-    if (file) {
-      setSelectedFile(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setSelectedImage(reader.result);
-        setResults(null);
-        setError(null);
-      };
-      reader.readAsDataURL(file);
-      
-      // Auto-trigger search
-      await triggerSearch(file);
-    }
+    fetchHistory();
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ 
-    onDrop,
-    accept: { 'image/*': ['.jpeg', '.jpg', '.png', '.webp'] },
-    multiple: false,
-    disabled: isLoading
-  });
-
-  const triggerSearch = async (fileToUpload) => {
+  const handleSelectProduct = async (product) => {
     setIsLoading(true);
+    setResults(null);
+    setSelectedProductId(product.id);
+    setSelectedImage(product.primary_image_url);
+    setPublicSearchUrl(product.public_search_url);
     setError(null);
-
     try {
-      const formData = new FormData();
-      formData.append('image', fileToUpload);
+      const res = await api.get(`/api/detections?productId=${product.id}`);
+      if (res.data && res.data.data) {
+        const detections = res.data.data;
+        const normalizedExact = detections
+          .filter(d => d.match_type === 'exact_match' || Number(d.similarity) >= 85)
+          .map(d => {
+            const parsedUrl = parseUrlSafely(d.website);
+            return {
+              id: d.id,
+              url: parsedUrl.href,
+              website_url: parsedUrl.href,
+              copied_image_url: d.image,
+              similarity_score: Number(d.similarity),
+              match_type: 'Exact Match',
+              emails: d.contact_email ? [{ email: d.contact_email, status: 'Ready' }] : [],
+              status: d.status
+            };
+          });
+        
+        const normalizedSimilar = detections
+          .filter(d => d.match_type !== 'exact_match' && Number(d.similarity) < 85)
+          .map(d => {
+            const parsedUrl = parseUrlSafely(d.website);
+            return {
+              id: d.id,
+              url: parsedUrl.href,
+              website_url: parsedUrl.href,
+              copied_image_url: d.image,
+              similarity_score: Number(d.similarity),
+              match_type: 'Similar Match',
+              emails: d.contact_email ? [{ email: d.contact_email, status: 'Ready' }] : [],
+              status: d.status
+            };
+          });
 
-      const res = await api.post('/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      const data = res.data;
-      if (data.error) throw new Error(data.error);
-      
-      setResults({
-        exact: data.exactMatches || [],
-        similar: data.similarMatches || [],
-        matching_websites: data.matching_websites || []
-      });
-      setScanTime(data.scan_duration || 'N/A');
-      setPublicSearchUrl(data.public_search_url || null);
-      setFilterMode('all'); // Reset filter mode to All upon new scan
-      if (data.product_id) {
-        setActiveProductId(data.product_id);
+        setResults({
+          exact: normalizedExact,
+          similar: normalizedSimilar,
+          matching_websites: [...normalizedExact, ...normalizedSimilar]
+        });
+        setScanTime('Loaded from History');
+        setFilterMode('all');
       }
-
-      const persistedScan = {
-        productId: data.product_id,
-        selectedImage: data.uploaded_image,
-        publicSearchUrl: data.public_search_url || null,
-        results: {
-          exact: data.exactMatches || [],
-          similar: data.similarMatches || [],
-          matching_websites: data.matching_websites || []
-        },
-        scanTime: data.scan_duration || 'N/A'
-      };
-      localStorage.setItem('last_scan_result', JSON.stringify(persistedScan));
     } catch (err) {
-      setError(err.message || 'Error uploading image');
+      setError(err.message || 'Error loading product details');
     } finally {
       setIsLoading(false);
     }
   };
 
+  const handleDeleteProduct = async (productId, e) => {
+    e.stopPropagation();
+    if (!window.confirm("Are you sure you want to delete this scan and all its matched links?")) return;
+    
+    try {
+      await api.delete(`/api/products/${productId}`);
+      setHistory(prev => prev.filter(p => p.id !== productId));
+      
+      if (selectedProductId === productId) {
+        setResults(null);
+        setSelectedImage(null);
+        setPublicSearchUrl(null);
+        setSelectedProductId(null);
+      }
+    } catch (err) {
+      alert(err.message || "Failed to delete product");
+    }
+  };
+
   const handleShowNotice = (email, matchObj) => {
-    const domain = parseUrlSafely(matchObj.url).hostname;
     setSelectedNotice(matchObj);
     setEditableEmail(email || '');
     setEditableContent(
@@ -234,7 +188,7 @@ Sincerely,
 [Your Contact Information]
 [Your Email Address]`
     );
-    setIsEditing(false); // Reset editing state
+    setIsEditing(false);
     setIsModalOpen(true);
   };
 
@@ -255,7 +209,6 @@ Sincerely,
       const res = await api.post('/api/notices', payload);
       if (res.data.error) throw new Error(res.data.error);
 
-      // Update UI status locally
       setResults(prev => ({
           ...prev,
           exact: prev.exact.map(m => m.url === selectedNotice.url ? { ...m, status: 'approved' } : m),
@@ -271,7 +224,6 @@ Sincerely,
     }
   };
 
-  // Combine exact and similar matches for unified single-section display
   const allMatches = results ? [
     ...results.exact.map(m => ({ ...m, isExact: true })),
     ...results.similar.map(m => ({ ...m, isExact: false }))
@@ -284,136 +236,85 @@ Sincerely,
   });
 
   return (
-    <div className="min-h-screen bg-[#FDFEFE] font-['Inter',sans-serif] text-slate-800 selection:bg-indigo-100 w-full p-6 md:p-12 lg:p-16 overflow-y-auto">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-[#FDFEFE] flex font-['Inter',sans-serif] text-slate-800 selection:bg-indigo-100 w-full">
+      {/* Sidebar - History */}
+      <div className="w-80 border-r border-slate-100 bg-white flex flex-col h-screen sticky top-0 overflow-y-auto custom-scrollbar p-6">
+        <div className="flex items-center justify-between mb-8">
+          <h3 className="font-black text-slate-900 text-lg uppercase tracking-wider pl-2 border-l-4 border-indigo-600">Scan History</h3>
+          <button
+            onClick={() => navigate('/products')}
+            className="p-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-xl text-xs font-bold transition-all"
+            title="Scan a new image"
+          >
+            + New Scan
+          </button>
+        </div>
+
+        <div className="space-y-4 flex-1">
+          {history.length === 0 ? (
+            <div className="text-center py-12 text-slate-400 font-medium text-sm italic">
+              No recent scans found.
+            </div>
+          ) : (
+            history.map((product) => (
+              <div
+                key={product.id}
+                onClick={() => handleSelectProduct(product)}
+                className={`flex items-center gap-4 p-4 rounded-[24px] border cursor-pointer transition-all duration-300 group ${
+                  selectedProductId === product.id
+                    ? 'border-indigo-600 bg-indigo-50/30'
+                    : 'border-slate-100 hover:border-indigo-200 hover:bg-slate-50/50'
+                }`}
+              >
+                <div className="w-12 h-12 rounded-[16px] overflow-hidden border border-slate-100 shadow-sm flex-shrink-0">
+                  <img src={product.primary_image_url} alt={product.name} className="w-full h-full object-cover" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="block font-bold text-slate-900 text-sm truncate leading-tight group-hover:text-indigo-600 transition-colors">
+                    {product.name}
+                  </span>
+                  <span className="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">
+                    {product.created_at ? new Date(product.created_at).toLocaleDateString() : 'Recent'}
+                  </span>
+                </div>
+                <button
+                  onClick={(e) => handleDeleteProduct(product.id, e)}
+                  className="p-2 text-slate-300 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-all opacity-0 group-hover:opacity-100"
+                  title="Delete from history"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+
+      {/* Main Experience Content - Centered and full width */}
+      <div className="flex-1 p-6 md:p-12 lg:p-16 h-screen overflow-y-auto">
+        <div className="max-w-6xl mx-auto">
           
           {!results && !isLoading ? (
-            <div className="space-y-16 mt-6">
-              {/* Premium Glow Upload Card */}
-              <div 
-                {...getRootProps()} 
-                className={`
-                  relative overflow-hidden group cursor-pointer transition-all duration-500
-                  bg-gradient-to-br from-white to-slate-50/50 border-2 border-dashed rounded-[48px] p-16 md:p-20 text-center
-                  shadow-[0_30px_60px_-15px_rgba(79,70,229,0.06)] hover:shadow-[0_40px_80px_-20px_rgba(79,70,229,0.12)]
-                  ${isDragActive ? 'border-indigo-600 bg-indigo-50/30 scale-[1.01]' : 'border-indigo-100 hover:border-indigo-400'}
-                `}
+            <div className="bg-white rounded-[48px] p-24 text-center border border-slate-100 shadow-inner mt-12 max-w-3xl mx-auto">
+              <Clock className="w-16 h-16 text-indigo-100 mx-auto mb-6 animate-pulse" />
+              <h3 className="text-2xl font-black text-slate-800 mb-2 uppercase tracking-tight">Review Scan History</h3>
+              <p className="text-slate-500 font-medium mb-8 max-w-md mx-auto leading-relaxed">
+                Select a scan from the left sidebar to review detected infringements, view visual match details, and take action.
+              </p>
+              <button
+                onClick={() => navigate('/products')}
+                className="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-slate-900 transition-all"
               >
-                <input {...getInputProps()} />
-                
-                {/* Visual Glow Effect */}
-                <div className="absolute -right-20 -top-20 w-80 h-80 bg-indigo-100/30 rounded-full blur-3xl group-hover:bg-indigo-200/40 transition-all duration-500 -z-10"></div>
-                <div className="absolute -left-20 -bottom-20 w-80 h-80 bg-indigo-50/40 rounded-full blur-3xl group-hover:bg-indigo-100/50 transition-all duration-500 -z-10"></div>
-
-                {/* Animated Scanner Radar Rings around Icon */}
-                <div className="relative w-36 h-36 mx-auto mb-10">
-                  {/* Ripple Rings */}
-                  <div className="absolute inset-0 bg-indigo-500/10 rounded-full animate-ping opacity-60"></div>
-                  <div className="absolute -inset-4 bg-indigo-500/5 rounded-full animate-pulse opacity-40"></div>
-                  {/* Center Icon Container */}
-                  <div className="absolute inset-3 bg-gradient-to-tr from-indigo-600 to-violet-500 rounded-[38px] flex items-center justify-center shadow-xl shadow-indigo-200 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500">
-                    <Upload className="w-10 h-10 text-white" />
-                  </div>
-                </div>
-
-                <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight leading-none bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 bg-clip-text text-transparent">
-                  Your Design. Protected.
-                </h2>
-                
-                <p className="text-slate-500 text-lg font-medium mb-10 max-w-md mx-auto leading-relaxed">
-                  {isDragActive 
-                    ? 'Drop your design here to initiate scanning...' 
-                    : 'Drag and drop your creative design here, or browse files to initiate scanning'}
-                </p>
-
-                {/* Supported formats badges */}
-                <div className="flex flex-wrap justify-center items-center gap-3 mb-12">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mr-2">Supported:</span>
-                  {['PNG', 'JPG', 'WEBP', 'JPEG'].map((fmt) => (
-                    <span key={fmt} className="px-3.5 py-1.5 bg-slate-100/80 text-slate-600 rounded-full font-bold text-xs tracking-wider border border-slate-200/30">
-                      {fmt}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="relative inline-block z-10 group/btn">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-2xl blur opacity-30 group-hover/btn:opacity-60 transition duration-300"></div>
-                  <div className="relative bg-gradient-to-r from-indigo-600 to-violet-600 text-white px-12 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl cursor-pointer hover:from-slate-900 hover:to-slate-900 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0">
-                    Choose Creative Asset
-                  </div>
-                </div>
-              </div>
-
-              {/* Seamless Procedural How-It-Works Steps */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
-                <div className="bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm relative overflow-hidden group hover:shadow-md transition-all duration-300">
-                  <div className="absolute top-0 left-0 w-2 h-full bg-indigo-500/20"></div>
-                  <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 font-bold mb-6 group-hover:scale-110 transition-transform">1</div>
-                  <h4 className="font-extrabold text-slate-900 text-lg mb-2">Upload Original Asset</h4>
-                  <p className="text-slate-500 text-sm leading-relaxed font-medium">Upload any catalog, digital artwork, or photography in standard web image formats.</p>
-                </div>
-
-                <div className="bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm relative overflow-hidden group hover:shadow-md transition-all duration-300">
-                  <div className="absolute top-0 left-0 w-2 h-full bg-violet-500/20"></div>
-                  <div className="w-12 h-12 rounded-2xl bg-violet-50 flex items-center justify-center text-violet-600 font-bold mb-6 group-hover:scale-110 transition-transform">2</div>
-                  <h4 className="font-extrabold text-slate-900 text-lg mb-2">Neural Visual Matching</h4>
-                  <p className="text-slate-500 text-sm leading-relaxed font-medium">Our advanced computer vision cross-references 500M+ retail listings in seconds.</p>
-                </div>
-
-                <div className="bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm relative overflow-hidden group hover:shadow-md transition-all duration-300">
-                  <div className="absolute top-0 left-0 w-2 h-full bg-rose-500/20"></div>
-                  <div className="w-12 h-12 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 font-bold mb-6 group-hover:scale-110 transition-transform">3</div>
-                  <h4 className="font-extrabold text-slate-900 text-lg mb-2">Direct Takedown Action</h4>
-                  <p className="text-slate-500 text-sm leading-relaxed font-medium">Identify copycats, track similarity metrics, and issue instant formal copyright notices.</p>
-                </div>
-              </div>
+                Scan a New Image
+              </button>
             </div>
           ) : isLoading ? (
-            <div className="bg-white rounded-[64px] p-16 md:p-24 text-center border border-slate-100 shadow-2xl mb-16 mt-12 max-w-3xl mx-auto relative overflow-hidden">
-              {/* Radial Glowing Background */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-indigo-50/20 via-white to-violet-50/20 -z-10"></div>
-              
-              {/* Spinning Scanner Orb */}
-              <div className="relative w-28 h-28 mx-auto mb-10">
-                <div className="absolute inset-0 rounded-full border-8 border-slate-100 border-t-indigo-600 animate-spin"></div>
-                <div className="absolute inset-4 rounded-full bg-indigo-50/50 flex items-center justify-center">
-                  <Zap className="w-8 h-8 text-indigo-600 animate-pulse" />
-                </div>
-              </div>
-              
-              <h3 className="text-3xl font-black text-slate-900 tracking-tight mb-3">Neural Web Scan Active</h3>
-              <p className="text-indigo-600 font-extrabold uppercase tracking-[0.2em] text-xs mb-8 flex items-center justify-center gap-2">
-                <span className="w-2 h-2 bg-indigo-600 rounded-full animate-ping"></span>
-                Blazing Speed Optimization Engaged
-              </p>
-
-              {/* Progress Slider */}
-              <div className="max-w-md mx-auto mb-12 bg-slate-50 p-6 rounded-[28px] border border-slate-100">
-                <div className="flex justify-between items-center mb-3">
-                  <span className="text-xs font-black text-slate-400 uppercase tracking-widest">Scanning Progress</span>
-                  <span className="text-sm font-black text-indigo-600">{scanProgress}%</span>
-                </div>
-                <div className="w-full bg-slate-200/60 rounded-full h-3 mb-6 overflow-hidden">
-                  <div 
-                    className="bg-gradient-to-r from-indigo-600 to-violet-500 h-full rounded-full transition-all duration-300"
-                    style={{ width: `${scanProgress}%` }}
-                  ></div>
-                </div>
-                
-                {/* Active task steps */}
-                <div className="text-slate-600 text-sm font-bold animate-in fade-in slide-in-from-bottom-2 duration-300 min-h-[20px]">
-                  {scanStep}
-                </div>
-              </div>
-
-              {/* ESTIMATED TIMEOUT COUNTER */}
-              <div className="inline-flex items-center gap-3 bg-rose-50 text-rose-700 px-6 py-3 rounded-2xl border border-rose-100/50 font-black text-xs uppercase tracking-widest shadow-inner">
-                <Clock className="w-4 h-4 text-rose-600 animate-spin" />
-                <span>Est. Fetch Time Remaining: {estTimeLeft}s</span>
-              </div>
+            <div className="flex flex-col items-center justify-center py-40 bg-white rounded-[48px] border border-slate-100 mt-12 shadow-sm max-w-3xl mx-auto">
+              <Loader2 className="w-10 h-10 text-indigo-600 animate-spin" />
+              <p className="text-slate-450 text-xs font-black uppercase tracking-widest mt-6 animate-pulse">Loading scan data...</p>
             </div>
           ) : results ? (
-            <div className="animate-in fade-in slide-in-from-bottom-10 shadow-2xl shadow-indigo-50/20 duration-1000 mt-8">
+            <div className="animate-in fade-in slide-in-from-bottom-6 shadow-2xl shadow-indigo-50/20 duration-300 mt-8">
               {/* Reset/Upload New Header */}
               <div className="flex items-center justify-between mb-12 bg-white p-8 rounded-[40px] border border-slate-50 shadow-sm">
                 <div className="flex items-center gap-6">
@@ -434,24 +335,12 @@ Sincerely,
                     )}
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  {activeProductId && (
-                    <button 
-                      onClick={handleDeleteScan}
-                      className="bg-rose-50 hover:bg-rose-100 text-rose-700 px-6 py-4 rounded-[20px] font-black text-xs uppercase tracking-widest transition-all flex items-center gap-2"
-                      title="Delete this scan"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                      Delete Scan
-                    </button>
-                  )}
-                  <button 
-                    onClick={handleScanNew}
-                    className="bg-slate-50 hover:bg-slate-100 text-slate-600 px-6 py-4 rounded-[20px] font-black text-xs uppercase tracking-widest transition-all"
-                  >
-                    Scan New Design
-                  </button>
-                </div>
+                <button 
+                  onClick={() => navigate('/products')}
+                  className="bg-slate-50 hover:bg-slate-100 text-slate-600 px-8 py-4 rounded-[20px] font-black text-xs uppercase tracking-widest transition-all"
+                >
+                  Scan New Design
+                </button>
               </div>
 
               {/* Industry Stats Cluster */}
@@ -465,7 +354,6 @@ Sincerely,
                     {scanTime}
                     <span className="text-sm font-bold ml-2 text-slate-200 uppercase tracking-widest">Processing Time</span>
                   </div>
-                  {/* optimized speed hint */}
                   <span className="block mt-3 text-[10px] font-bold text-emerald-500 uppercase tracking-wider">⚡ Blazing Speed Active (Connection Pooling, Threaded Maps)</span>
                 </div>
                 
@@ -519,9 +407,16 @@ Sincerely,
 
                 {filteredMatches.length === 0 ? (
                   <div className="bg-white rounded-[48px] p-24 text-center border border-slate-100 shadow-inner">
-                    <CheckCircle2 className="w-16 h-16 text-emerald-100 mx-auto mb-6" />
+                    <CheckCircle2 className="w-16 h-16 text-emerald-100 mx-auto mb-6 animate-pulse" />
                     <h4 className="text-xl font-black text-slate-500 mb-2 uppercase tracking-tight">No Matches Found</h4>
-                    <p className="text-slate-600 font-medium italic">No scan items match your filter criteria.</p>
+                    <p className="text-slate-600 font-medium italic mb-8">No scan items match your filter criteria or this design has not been scanned yet.</p>
+                    <button
+                      onClick={handleStartScan}
+                      disabled={scanning}
+                      className="bg-indigo-600 hover:bg-slate-900 text-white px-10 py-4 rounded-[20px] font-black text-xs uppercase tracking-widest transition-all disabled:opacity-50 shadow-lg shadow-indigo-200"
+                    >
+                      {scanning ? 'Running Neural Scan...' : 'Scan / Re-Scan Design Now'}
+                    </button>
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -538,7 +433,6 @@ Sincerely,
                   </div>
                 )}
               </div>
-
             </div>
           ) : null}
 
@@ -552,6 +446,7 @@ Sincerely,
             </div>
           )}
         </div>
+      </div>
 
       {/* Notice Modal */}
       {isModalOpen && selectedNotice && (
@@ -561,7 +456,6 @@ Sincerely,
             {/* Visual Evidence */}
             <div className="md:w-2/5 bg-slate-50 p-12 flex flex-col border-r border-slate-100">
               <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] mb-12">Evidence Package</h3>
-              
               <div className="space-y-12 overflow-y-auto pr-2 custom-scrollbar">
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pr-2">
@@ -660,15 +554,12 @@ Sincerely,
   );
 }
 
-// Reusable Lite Match Card Component
 function MatchCard({ match, index, onNotice, isExact, selectedImage }) {
   const domain = match.brand_name || parseUrlSafely(match.url).hostname.replace('www.', '');
   
   return (
     <div className="flex flex-col bg-white border border-slate-100 rounded-[48px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700 group relative">
       <div className="p-10">
-        
-        {/* Exact or Similar Match Status Banner */}
         <div className={`mb-6 p-4 rounded-[20px] text-center font-black text-xs uppercase tracking-wider border transition-all duration-300 ${
           isExact 
             ? 'bg-rose-50/80 border-rose-100 text-rose-700 shadow-sm' 

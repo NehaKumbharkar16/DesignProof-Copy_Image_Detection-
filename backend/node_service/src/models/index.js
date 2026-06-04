@@ -21,8 +21,8 @@ Product.belongsTo(Brand, { foreignKey: 'brand_id', as: 'brand' });
 Brand.hasMany(Detection, { foreignKey: 'brand_id', as: 'detections' });
 Detection.belongsTo(Brand, { foreignKey: 'brand_id', as: 'brand' });
 
-Product.hasMany(Detection, { foreignKey: 'product_id', as: 'detections' });
-Detection.belongsTo(Product, { foreignKey: 'product_id', as: 'product' });
+Product.hasMany(Detection, { foreignKey: 'product_id', as: 'detections', onDelete: 'CASCADE', hooks: true });
+Detection.belongsTo(Product, { foreignKey: 'product_id', as: 'product', onDelete: 'CASCADE' });
 
 Detection.hasOne(Takedown, { foreignKey: 'detected_match_id', as: 'takedown' });
 Takedown.belongsTo(Detection, { foreignKey: 'detected_match_id', as: 'detection' });

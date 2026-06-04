@@ -31,6 +31,8 @@ import AdminAuditLogs from './pages/admin/AuditLogs'
 import Monitoring from './pages/Monitoring'
 import Matches from './pages/Matches'
 import Reports from './pages/Reports'
+import ScanHistory from './pages/ScanHistory'
+import IPAuthority from './pages/IPAuthority'
 import { Toaster } from 'react-hot-toast'
 
 export default function App() {
@@ -63,12 +65,14 @@ export default function App() {
                       <Route path="/onboarding" element={<Onboarding />} />
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/products" element={<Products />} />
+                      <Route path="/history" element={<ScanHistory />} />
                       <Route path="/products/upload" element={<ProductUpload />} />
                       <Route path="/products/:id" element={<ProductDetail />} />
                       <Route path="/detections" element={<Detections />} />
                       <Route path="/takedowns" element={<Takedowns />} />
                       <Route path="/subscription" element={<Subscription />} />
                       <Route path="/settings" element={<Settings />} />
+                      <Route path="/authority" element={<IPAuthority />} />
                       <Route path="/monitoring" element={<Monitoring />} />
                       <Route path="/matches" element={<Matches />} />
                       <Route path="/reports" element={<Reports />} />

@@ -3,6 +3,25 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ShieldAlert, AlertTriangle, ExternalLink, Mail, CheckCircle, Search, Clock } from 'lucide-react'
 import DeleteConfirmModal from '../components/DeleteConfirmModal'
 
+const parseUrlSafely = (urlStr) => {
+    try {
+        if (!urlStr) {
+            return { hostname: 'unknown-platform.com', href: '#' };
+        }
+        let cleanUrl = urlStr.trim();
+        if (!/^https?:\/\//i.test(cleanUrl)) {
+            cleanUrl = 'https://' + cleanUrl;
+        }
+        const parsed = new URL(cleanUrl);
+        return {
+            hostname: parsed.hostname || 'unknown-platform.com',
+            href: parsed.href
+        };
+    } catch (e) {
+        return { hostname: 'unknown-platform.com', href: urlStr || '#' };
+    }
+};
+
 export default function ProductDetail(){
   const { id } = useParams()
   const navigate = useNavigate()
@@ -189,7 +208,7 @@ function DetectionCard({ det, isExact }) {
       </div>
       <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
         <div>
-          <h4 className="font-bold text-slate-800 dark:text-white truncate">{new URL(det.website).hostname.replace('www.', '')}</h4>
+          <h4 className="font-bold text-slate-800 dark:text-white truncate">{parseUrlSafely(det.website).hostname.replace('www.', '')}</h4>
           <div className="flex items-center justify-between mt-1">
             <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Found: {det.dateFound}</p>
             {det.contact_email && (
@@ -204,7 +223,7 @@ function DetectionCard({ det, isExact }) {
             <ExternalLink size={14} /> Open
           </a>
           <button 
-            onClick={() => det.contact_email ? window.location.href = `mailto:${det.contact_email}?subject=Copyright Infringement Notice&body=Dear ${new URL(det.website).hostname} Support Team...` : alert('Crawl in progress or no email found.')}
+            onClick={() => det.contact_email ? window.location.href = `mailto:${det.contact_email}?subject=Copyright Infringement Notice&body=Dear ${parseUrlSafely(det.website).hostname} Support Team...` : alert('Crawl in progress or no email found.')}
             className={`flex-[2] py-3 text-center text-white rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2 shadow-lg ${det.contact_email ? 'bg-brand-forest hover:shadow-brand-forest/20' : 'bg-slate-300 cursor-not-allowed'}`}
           >
             <Mail size={14} /> {det.contact_email ? 'Send Legal Notice' : 'Searching for Email...'}

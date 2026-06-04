@@ -4,6 +4,61 @@ import { User, Brand, Product, Detection, SentNotice } from '../models/index.js'
 import { crawlWebsiteForEmails } from '../services/crawlerService.js';
 import crypto from 'crypto';
 import pLimit from 'p-limit';
+import fs from 'fs';
+import path from 'path';
+import axios from 'axios';
+
+const saveImageLocally = async (imageUrl) => {
+    try {
+        if (!imageUrl || typeof imageUrl !== 'string') {
+            return imageUrl;
+        }
+        // If it's already a local URL, don't download it again
+        if (imageUrl.startsWith('http://127.0.0.1:5000/uploads/') || imageUrl.startsWith('http://localhost:5000/uploads/') || imageUrl.startsWith('/uploads/') || imageUrl.startsWith('http://127.0.0.1:5001/uploads/')) {
+            return imageUrl;
+        }
+        if (!imageUrl.startsWith('http')) {
+            return imageUrl;
+        }
+
+        const response = await axios({
+            url: imageUrl,
+            method: 'GET',
+            responseType: 'stream',
+            timeout: 5000
+        });
+
+        let ext = '.jpg';
+        const contentType = response.headers['content-type'];
+        if (contentType) {
+            if (contentType.includes('png')) ext = '.png';
+            else if (contentType.includes('webp')) ext = '.webp';
+            else if (contentType.includes('gif')) ext = '.gif';
+        }
+
+        const filename = `infringing_${crypto.randomUUID()}${ext}`;
+        const uploadDir = path.resolve('..', 'python_service', 'uploads');
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+        }
+        
+        const filePath = path.join(uploadDir, filename);
+        const writer = fs.createWriteStream(filePath);
+
+        response.data.pipe(writer);
+
+        return new Promise((resolve) => {
+            writer.on('finish', () => resolve(`http://127.0.0.1:5001/uploads/${filename}`));
+            writer.on('error', (err) => {
+                console.error("Writer error", err);
+                resolve(imageUrl);
+            });
+        });
+    } catch (error) {
+        console.error(`[WARN] Failed to save image locally: ${imageUrl}`, error.message);
+        return imageUrl;
+    }
+};
 
 const limit = pLimit(10); // 10 concurrent crawls as per task
 
@@ -44,6 +99,7 @@ export const handleImageUpload = async (req, res) => {
 
         const finalResponse = {
             uploaded_image: publicImageUrl,
+            public_search_url: pythonResponse.public_search_url,
             exactMatches,
             similarMatches,
             matching_websites: verifiedMatches, 
@@ -86,18 +142,27 @@ export const handleImageUpload = async (req, res) => {
                 brand_id: brand.id,
                 name: req.file.originalname,
                 primary_image_url: publicImageUrl,
+                public_search_url: pythonResponse.public_search_url,
+                phash_code: pythonResponse.p_hash || crypto.createHash('md5').update(req.file.originalname + Date.now()).digest('hex').substring(0, 16),
                 priority: 'high',
                 protection_active: true
             });
+            finalResponse.product_id = product.id;
+            finalResponse.p_hash = product.phash_code;
 
             console.log(`[Node Gateway] Storing ${verifiedMatches.length} detection matches...`);
+            const dbDetectionsMap = new Map();
             for (const match of verifiedMatches) {
+                const matchId = crypto.randomUUID();
+                const externalImg = match.copied_image_url || match.thumbnail;
+                const localInfringingUrl = await saveImageLocally(externalImg);
+
                 await Detection.create({
-                    id: crypto.randomUUID(),
+                    id: matchId,
                     product_id: product.id,
                     brand_id: brand.id,
                     infringing_url: match.url || match.link,
-                    infringing_image_url: match.copied_image_url || match.thumbnail,
+                    infringing_image_url: localInfringingUrl,
                     similarity_score: match.similarity_score || 85.0,
                     match_type: match.match_type === "Exact Match" ? "exact_match" : "similar_match",
                     detected_platform: 'web_discovery',
@@ -105,7 +170,28 @@ export const handleImageUpload = async (req, res) => {
                     client_status: 'pending',
                     contact_email: match.emails && match.emails.length > 0 ? match.emails[0].email : null
                 });
+                dbDetectionsMap.set(match.url || match.link, matchId);
+                
+                // Update match object in response so frontend gets local URL immediately
+                if (match.copied_image_url) match.copied_image_url = localInfringingUrl;
+                else if (match.thumbnail) match.thumbnail = localInfringingUrl;
             }
+
+            const mapDbIds = (list) => {
+                if (!list) return [];
+                return list.map(item => {
+                    const key = item.url || item.link;
+                    if (dbDetectionsMap.has(key)) {
+                        return { ...item, id: dbDetectionsMap.get(key) };
+                    }
+                    return item;
+                });
+            };
+
+            finalResponse.exactMatches = mapDbIds(exactMatches);
+            finalResponse.similarMatches = mapDbIds(similarMatches);
+            finalResponse.matching_websites = mapDbIds(verifiedMatches);
+
             console.log(`[OK] [NODE] DB storage success for product: ${product.name}`);
         } catch (dbErr) {
             console.error("[ERR] [NODE] DB STORAGE FAILURE:", dbErr.message, dbErr.stack);

@@ -26,6 +26,34 @@ const Brand = sequelize.define('Brand', {
     is_verified: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+    },
+    scan_type: {
+        type: DataTypes.STRING,
+        defaultValue: 'continuous'
+    },
+    scan_frequency: {
+        type: DataTypes.STRING,
+        defaultValue: 'daily'
+    },
+    monitor_d2c: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+    },
+    monitor_shopify: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+    },
+    monitor_marketplaces: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+    },
+    monitor_google_images: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+    },
+    monitor_social_media: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 }, {
     tableName: 'brands',

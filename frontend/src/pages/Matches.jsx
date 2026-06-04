@@ -1,7 +1,25 @@
 import React, { useState, useEffect } from 'react'
-import { ShieldAlert, CheckCircle, XCircle, Slash, ExternalLink, Search, Filter, AlertTriangle } from 'lucide-react'
-
+import { ShieldAlert, CheckCircle, XCircle, Slash, ExternalLink, Search, Filter, AlertTriangle, Trash2 } from 'lucide-react'
 import api from '../services/api'
+
+const parseUrlSafely = (urlStr) => {
+    try {
+        if (!urlStr) {
+            return { hostname: 'unknown-platform.com', href: '#' };
+        }
+        let cleanUrl = urlStr.trim();
+        if (!/^https?:\/\//i.test(cleanUrl)) {
+            cleanUrl = 'https://' + cleanUrl;
+        }
+        const parsed = new URL(cleanUrl);
+        return {
+            hostname: parsed.hostname || 'unknown-platform.com',
+            href: parsed.href
+        };
+    } catch (e) {
+        return { hostname: 'unknown-platform.com', href: urlStr || '#' };
+    }
+};
 
 export default function Matches() {
     const [matches, setMatches] = useState([])
@@ -14,19 +32,22 @@ export default function Matches() {
                 setLoading(true)
                 const res = await api.get('/api/detections')
                 // Direct mapping from backend keys to frontend keys
-                const mappedData = res.data.data.map(item => ({
-                    id: item.id,
-                    productName: item.productName || 'Unknown Product',
-                    similarity: item.similarity,
-                    platform: new URL(item.website).hostname.replace('www.', ''),
-                    domain: new URL(item.website).hostname,
-                    url: item.website,
-                    status: item.status === 'pending_review' ? 'pending' : item.status,
-                    originalImage: 'https://via.placeholder.com/300?text=Scan+Image',
-                    infringingImage: item.image,
-                    dateFound: item.dateFound,
-                    confidence: item.similarity > 95 ? 'Direct Copy' : 'Modified Copy'
-                }))
+                const mappedData = res.data.data.map(item => {
+                    const parsedUrl = parseUrlSafely(item.website);
+                    return {
+                        id: item.id,
+                        productName: item.productName || 'Unknown Product',
+                        similarity: item.similarity,
+                        platform: parsedUrl.hostname.replace('www.', ''),
+                        domain: parsedUrl.hostname,
+                        url: parsedUrl.href,
+                        status: item.status === 'pending_review' ? 'pending' : item.status,
+                        originalImage: item.productImage || 'https://via.placeholder.com/300?text=Scan+Image',
+                        infringingImage: item.image,
+                        dateFound: item.dateFound,
+                        confidence: item.similarity > 95 ? 'Direct Copy' : 'Modified Copy'
+                    };
+                })
                 setMatches(mappedData)
             } catch (err) {
                 console.error("Failed to fetch matches", err)
@@ -38,8 +59,22 @@ export default function Matches() {
     }, [])
 
     const handleAction = async (id, action) => {
-        // In a real app, this would call an API
-        setMatches(prev => prev.map(m => m.id === id ? { ...m, status: action } : m))
+        try {
+            await api.put(`/api/detections/${id}`, { status: action })
+            setMatches(prev => prev.map(m => m.id === id ? { ...m, status: action } : m))
+        } catch (err) {
+            console.error("Failed to update status in DB:", err)
+        }
+    }
+
+    const handleDelete = async (id) => {
+        if (!window.confirm("Are you sure you want to delete this match?")) return;
+        try {
+            await api.delete(`/api/detections/${id}`)
+            setMatches(prev => prev.filter(m => m.id !== id))
+        } catch (err) {
+            console.error("Failed to delete match in DB:", err)
+        }
     }
 
     const filteredMatches = matches.filter(m => filter === 'all' || m.status === filter)
@@ -106,7 +141,7 @@ export default function Matches() {
                                 <p className="text-xs text-slate-500 italic pl-5">No exact matches found.</p>
                             ) : (
                                 filteredMatches.filter(m => m.similarity >= 99).map(match => (
-                                    <MatchCard key={match.id} match={match} onAction={handleAction} />
+                                    <MatchCard key={match.id} match={match} onAction={handleAction} onDelete={handleDelete} />
                                 ))
                             )}
                         </div>
@@ -121,7 +156,7 @@ export default function Matches() {
                                 <p className="text-xs text-slate-500 italic pl-5">No similar matches found.</p>
                             ) : (
                                 filteredMatches.filter(m => m.similarity < 99).map(match => (
-                                    <MatchCard key={match.id} match={match} onAction={handleAction} />
+                                    <MatchCard key={match.id} match={match} onAction={handleAction} onDelete={handleDelete} />
                                 ))
                             )}
                         </div>
@@ -133,7 +168,7 @@ export default function Matches() {
     )
 }
 
-function MatchCard({ match, onAction }) {
+function MatchCard({ match, onAction, onDelete }) {
     const isPending = match.status === 'pending'
 
     return (
@@ -152,9 +187,18 @@ function MatchCard({ match, onAction }) {
                     <span className="text-slate-500">•</span>
                     <span className="text-slate-600">{match.dateFound}</span>
                 </div>
-                <a href={match.url} target="_blank" rel="noreferrer" className="flex items-center gap-1 text-brand-gold hover:underline">
-                    View Source <ExternalLink size={14} />
-                </a>
+                <div className="flex items-center gap-4">
+                    <a href={match.url} target="_blank" rel="noreferrer" className="flex items-center gap-1 text-brand-gold hover:underline">
+                        View Source <ExternalLink size={14} />
+                    </a>
+                    <button 
+                        onClick={() => onDelete(match.id)}
+                        className="text-red-500 hover:text-red-700 p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/20 transition-all active:scale-95"
+                        title="Delete Match"
+                    >
+                        <Trash2 size={16} />
+                    </button>
+                </div>
             </div>
 
             <div className="p-6 grid lg:grid-cols-12 gap-6">
